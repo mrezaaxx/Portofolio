@@ -15,7 +15,7 @@
     --accent-glow: rgba(0, 229, 122, 0.12);
     --text: #e8f0ec;
     --text-muted: #7a9485;
-    --text-dim: #4a6255;
+    --text-dim: #668073;
     --border: rgba(0, 229, 122, 0.12);
     --border-soft: rgba(255,255,255,0.06);
   }
@@ -23,6 +23,31 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+
+  /* ACCESSIBILITY: Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ACCESSIBILITY: Focus Indicators */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
 
   body {
     background: var(--bg);
@@ -583,6 +608,8 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to content</a>
+
 <nav>
   <a class="nav-logo" href="#">MR_DEV</a>
   <ul class="nav-links">
@@ -591,6 +618,9 @@
     <li><a href="#about">Profile</a></li>
   </ul>
 </nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero">
@@ -647,7 +677,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon">🏥</div>
+        <div class="project-icon" aria-hidden="true">🏥</div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -667,7 +697,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🏨</div>
+        <div class="project-icon" aria-hidden="true">🏨</div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -687,7 +717,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🦷</div>
+        <div class="project-icon" aria-hidden="true">🦷</div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -706,7 +736,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌴</div>
+        <div class="project-icon" aria-hidden="true">🌴</div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -725,7 +755,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🔴</div>
+        <div class="project-icon" aria-hidden="true">🔴</div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -744,7 +774,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌳</div>
+        <div class="project-icon" aria-hidden="true">🌳</div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
@@ -777,58 +807,58 @@
     <div class="skill-group">
       <div class="skill-group-title">Backend</div>
       <div class="skill-items">
-        <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
-        <div class="skill-item"><span>Laravel</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>REST API Dev</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
+        <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="95%" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" aria-label="PHP (Native) proficiency"></div></div></div>
+        <div class="skill-item"><span>Laravel</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Laravel proficiency"></div></div></div>
+        <div class="skill-item"><span>REST API Dev</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="REST API Development proficiency"></div></div></div>
+        <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="65%" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="Python scripting proficiency"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Database</div>
       <div class="skill-items">
-        <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>Complex Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Report Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="PostgreSQL proficiency"></div></div></div>
+        <div class="skill-item"><span>Complex Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Complex Queries proficiency"></div></div></div>
+        <div class="skill-item"><span>Report Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Report Queries proficiency"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Frontend</div>
       <div class="skill-items">
-        <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Socket.io</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="HTML and CSS proficiency"></div></div></div>
+        <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="JavaScript and jQuery proficiency"></div></div></div>
+        <div class="skill-item"><span>Socket.io</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Socket.io proficiency"></div></div></div>
+        <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Print and PDF FPDF proficiency"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Healthcare IT</div>
       <div class="skill-items">
-        <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
-        <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="BPJS Kesehatan API proficiency"></div></div></div>
+        <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="78%" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" aria-label="SatuSehat Integration proficiency"></div></div></div>
+        <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="LIS Bridging proficiency"></div></div></div>
+        <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="EMR and SOAP Workflows proficiency"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Infrastructure</div>
       <div class="skill-items">
-        <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
+        <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" aria-label="Ubuntu Server proficiency"></div></div></div>
+        <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" aria-label="Git and Version Control proficiency"></div></div></div>
+        <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="Cron Jobs proficiency"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Domain Knowledge</div>
       <div class="skill-items">
-        <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
-        <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
+        <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="92%" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Hospital Business Flow proficiency"></div></div></div>
+        <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="Clinical Documentation proficiency"></div></div></div>
+        <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="Pharmacy and Warehouse proficiency"></div></div></div>
+        <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="87%" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Medical Reporting proficiency"></div></div></div>
       </div>
     </div>
   </div>
@@ -895,6 +925,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <span class="footer-name">Muhammad Reza</span>
