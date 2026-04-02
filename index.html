@@ -24,6 +24,11 @@
 
   html { scroll-behavior: smooth; }
 
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -84,7 +89,10 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
 
   /* HERO */
   .hero {
@@ -924,6 +932,26 @@
   if (skillsSection) {
     observer.observe(skillsSection);
   }
+
+  // Scroll-spy: Highlight active nav link on scroll
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50% 0px'
+  });
+
+  sections.forEach(section => spyObserver.observe(section));
 </script>
 
 </body>
