@@ -22,6 +22,11 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -85,6 +90,7 @@
   }
 
   .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); }
 
   /* HERO */
   .hero {
@@ -569,6 +575,23 @@
     margin: 0 3rem;
   }
 
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -582,6 +605,8 @@
 </style>
 </head>
 <body>
+
+<a href="#projects" class="skip-link">Skip to projects</a>
 
 <nav>
   <a class="nav-logo" href="#">MR_DEV</a>
@@ -647,7 +672,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon">🏥</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital icon">🏥</span></div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -667,7 +692,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🏨</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital icon">🏨</span></div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -687,7 +712,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🦷</div>
+        <div class="project-icon"><span role="img" aria-label="Tooth icon">🦷</span></div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -706,7 +731,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌴</div>
+        <div class="project-icon"><span role="img" aria-label="Palm tree icon">🌴</span></div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -725,7 +750,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🔴</div>
+        <div class="project-icon"><span role="img" aria-label="Red circle icon">🔴</span></div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -744,7 +769,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌳</div>
+        <div class="project-icon"><span role="img" aria-label="Deciduous tree icon">🌳</span></div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
@@ -924,6 +949,26 @@
   if (skillsSection) {
     observer.observe(skillsSection);
   }
+
+  // Scroll-Spy logic
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50% 0px'
+  });
+
+  sections.forEach(section => scrollSpyObserver.observe(section));
 </script>
 
 </body>
