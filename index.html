@@ -33,6 +33,35 @@
     overflow-x: hidden;
   }
 
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: var(--bg);
+    padding: 1rem 2rem;
+    z-index: 2000;
+    text-decoration: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    transition: top 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 20px rgba(0, 229, 122, 0.4);
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   /* Background grid */
   body::before {
     content: '';
@@ -84,7 +113,10 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
 
   /* HERO */
   .hero {
@@ -583,7 +615,9 @@
 </head>
 <body>
 
-<nav>
+<a href="#projects" class="skip-link">Skip to content</a>
+
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="#">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
@@ -593,7 +627,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section id="hero" class="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Freelance</div>
@@ -647,7 +681,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon">🏥</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital">🏥</span></div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -667,7 +701,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🏨</div>
+        <div class="project-icon"><span role="img" aria-label="Hotel">🏨</span></div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -687,7 +721,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🦷</div>
+        <div class="project-icon"><span role="img" aria-label="Tooth">🦷</span></div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -706,7 +740,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌴</div>
+        <div class="project-icon"><span role="img" aria-label="Palm Tree">🌴</span></div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -725,7 +759,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🔴</div>
+        <div class="project-icon"><span role="img" aria-label="Red Circle">🔴</span></div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -744,7 +778,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌳</div>
+        <div class="project-icon"><span role="img" aria-label="Tree">🌳</span></div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
@@ -924,6 +958,32 @@
   if (skillsSection) {
     observer.observe(skillsSection);
   }
+
+  // Scroll-spy logic
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const spyOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50% 0px'
+  };
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${id}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+    });
+  }, spyOptions);
+
+  sections.forEach(section => spyObserver.observe(section));
 </script>
 
 </body>
