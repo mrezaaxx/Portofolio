@@ -85,6 +85,31 @@
   }
 
   .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); }
+
+  /* Focus indicators */
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .skip-link {
+    position: fixed;
+    top: -100px;
+    left: 1.5rem;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.5rem 1rem;
+    z-index: 1000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
 
   /* HERO */
   .hero {
@@ -582,8 +607,9 @@
 </style>
 </head>
 <body>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="nav-logo" href="#">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
@@ -593,7 +619,8 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="hero">
+  <div id="main-content" tabindex="-1"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Freelance</div>
@@ -647,7 +674,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon">🏥</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital">🏥</span></div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -667,7 +694,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🏨</div>
+        <div class="project-icon"><span role="img" aria-label="Hotel">🏨</span></div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -687,7 +714,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🦷</div>
+        <div class="project-icon"><span role="img" aria-label="Tooth">🦷</span></div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -706,7 +733,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌴</div>
+        <div class="project-icon"><span role="img" aria-label="Palm Tree">🌴</span></div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -725,7 +752,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🔴</div>
+        <div class="project-icon"><span role="img" aria-label="Red Circle">🔴</span></div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -744,7 +771,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌳</div>
+        <div class="project-icon"><span role="img" aria-label="Tree">🌳</span></div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
@@ -924,6 +951,28 @@
   if (skillsSection) {
     observer.observe(skillsSection);
   }
+
+  // Scroll Spy for navigation
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+
+  const scrollSpyOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50% 0px'
+  };
+
+  const scrollSpyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+        });
+      }
+    });
+  }, scrollSpyOptions);
+
+  sections.forEach(section => scrollSpyObserver.observe(section));
 </script>
 
 </body>
