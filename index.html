@@ -22,6 +22,31 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 8px;
+    z-index: 101;
+    transition: top 0.2s;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   html { scroll-behavior: smooth; }
 
   body {
@@ -581,10 +606,12 @@
   }
 </style>
 </head>
-<body>
+<body id="top">
 
-<nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
+<a href="#main-content" class="skip-link">Skip to content</a>
+
+<nav aria-label="Main navigation">
+  <a class="nav-logo" href="#top">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -593,7 +620,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content" tabindex="-1">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Freelance</div>
@@ -647,7 +674,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon">🏥</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital">🏥</span></div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -667,7 +694,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🏨</div>
+        <div class="project-icon"><span role="img" aria-label="Hospital">🏨</span></div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -687,7 +714,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🦷</div>
+        <div class="project-icon"><span role="img" aria-label="Tooth">🦷</span></div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -706,7 +733,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌴</div>
+        <div class="project-icon"><span role="img" aria-label="Palm Tree">🌴</span></div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -725,7 +752,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🔴</div>
+        <div class="project-icon"><span role="img" aria-label="Red Circle">🔴</span></div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -744,7 +771,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon">🌳</div>
+        <div class="project-icon"><span role="img" aria-label="Tree">🌳</span></div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
