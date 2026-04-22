@@ -109,7 +109,10 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
 
   /* HERO */
   .hero {
@@ -956,6 +959,23 @@
   if (skillsSection) {
     observer.observe(skillsSection);
   }
+
+  // Scroll-spy: Highlight active nav link
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          const isActive = link.getAttribute('href') === `#${entry.target.id}`;
+          link.classList.toggle('active', isActive);
+          if (isActive) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50% 0px' });
+  sections.forEach(section => spyObserver.observe(section));
 </script>
 
 </body>
