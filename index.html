@@ -15,7 +15,7 @@
     --accent-glow: rgba(0, 229, 122, 0.12);
     --text: #e8f0ec;
     --text-muted: #7a9485;
-    --text-dim: #4a6255;
+    --text-dim: #668073;
     --border: rgba(0, 229, 122, 0.12);
     --border-soft: rgba(255,255,255,0.06);
   }
@@ -23,6 +23,31 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   html { scroll-behavior: smooth; }
+
+  /* ACCESSIBILITY: Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ACCESSIBILITY: Focus Indicators */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
 
   body {
     background: var(--bg);
@@ -626,7 +651,7 @@
 </head>
 <body>
 
-<a href="#main-content" class="skip-link">Skip to Content</a>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
   <a class="nav-logo" href="#">MR_DEV</a>
@@ -636,6 +661,9 @@
     <li><a href="#about">Profile</a></li>
   </ul>
 </nav>
+
+<!-- MAIN CONTENT -->
+<main id="main-content">
 
 <!-- HERO -->
 <section class="hero" id="main-content">
@@ -940,6 +968,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <span class="footer-name">Muhammad Reza</span>
