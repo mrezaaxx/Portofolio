@@ -15,7 +15,7 @@
     --accent-glow: rgba(0, 229, 122, 0.12);
     --text: #e8f0ec;
     --text-muted: #7a9485;
-    --text-dim: #4a6255;
+    --text-dim: #668073;
     --border: rgba(0, 229, 122, 0.12);
     --border-soft: rgba(255,255,255,0.06);
   }
@@ -33,12 +33,11 @@
     left: 0;
     background: var(--accent);
     color: var(--bg);
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     z-index: 1000;
+    transition: top 0.2s;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.8rem;
-    transition: top 0.2s;
   }
 
   .skip-link:focus {
@@ -46,6 +45,31 @@
   }
 
   html { scroll-behavior: smooth; }
+
+  /* ACCESSIBILITY: Skip Link */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.3s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* ACCESSIBILITY: Focus Indicators */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
 
   body {
     background: var(--bg);
@@ -107,9 +131,42 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--accent);
+  .nav-links a:hover { color: var(--accent); }
+  .nav-links a.active { color: var(--accent); position: relative; }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  /* ACCESSIBILITY */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 8px;
+    z-index: 1000;
+    transition: top 0.3s;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
+  /* Improve keyboard focus visibility */
+  a:focus-visible,
+  button:focus-visible,
+  .stack-tag:focus-visible,
+  .project-card:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
   }
 
   /* HERO */
@@ -152,6 +209,13 @@
     color: var(--accent);
     margin-bottom: 2rem;
     animation: fadeUp 0.6s ease forwards;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .hero-badge:hover {
+    background: var(--accent);
+    color: var(--bg);
   }
 
   .hero-badge::before {
@@ -595,6 +659,23 @@
     margin: 0 3rem;
   }
 
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent);
+    color: var(--bg);
+    padding: 0.8rem 1.5rem;
+    z-index: 1000;
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+
+  .skip-link:focus {
+    top: 0;
+  }
+
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -609,7 +690,7 @@
 </head>
 <body>
 
-<a href="#projects" class="skip-link">Skip to projects</a>
+<a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
   <a class="nav-logo" href="#">MR_DEV</a>
@@ -620,11 +701,14 @@
   </ul>
 </nav>
 
+<!-- MAIN CONTENT -->
+<main id="main-content">
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="main-content">
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hero-badge">Available for Freelance</div>
+    <a href="#about" class="hero-badge">Available for Freelance</a>
     <h1>Muhammad<br><span>Reza</span></h1>
     <p class="hero-role">Fullstack Developer · Healthcare IT Specialist</p>
     <p class="hero-desc">
@@ -675,7 +759,7 @@
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Hospital">🏥</span></div>
+        <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
         <span class="project-tasks">330 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
@@ -695,7 +779,7 @@
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Building">🏨</span></div>
+        <div class="project-icon" role="img" aria-label="Medical Clinic">🏨</div>
         <span class="project-tasks">318 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS Hamori Subang</div>
@@ -715,7 +799,7 @@
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Tooth">🦷</span></div>
+        <div class="project-icon" role="img" aria-label="Dental Clinic">🦷</div>
         <span class="project-tasks">196 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSGM Maranatha</div>
@@ -734,7 +818,7 @@
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Palm Tree">🌴</span></div>
+        <div class="project-icon" role="img" aria-label="Resort Hospital">🌴</div>
         <span class="project-tasks">177 Tasks</span>
       </div>
       <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
@@ -753,7 +837,7 @@
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Red Circle">🔴</span></div>
+        <div class="project-icon" role="img" aria-label="Red Cross">🔴</div>
         <span class="project-tasks">103 Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PMI Bogor</div>
@@ -772,7 +856,7 @@
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
-        <div class="project-icon"><span role="img" aria-label="Deciduous Tree">🌳</span></div>
+        <div class="project-icon" role="img" aria-label="Park Hospital">🌳</div>
         <span class="project-tasks">186+ Tasks</span>
       </div>
       <div class="project-name">SIMRS RS PT PMN Group</div>
@@ -805,58 +889,58 @@
     <div class="skill-group">
       <div class="skill-group-title">Backend</div>
       <div class="skill-items">
-        <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
-        <div class="skill-item"><span>Laravel</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>REST API Dev</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
+        <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
+        <div class="skill-item"><span>Laravel</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>REST API Dev</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Database</div>
       <div class="skill-items">
-        <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>Complex Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Report Queries</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
+        <div class="skill-item"><span>Complex Queries</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>Report Queries</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Frontend</div>
       <div class="skill-items">
-        <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Socket.io</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
+        <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
+        <div class="skill-item"><span>Socket.io</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+        <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Healthcare IT</div>
       <div class="skill-items">
-        <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
-        <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
+        <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+        <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Infrastructure</div>
       <div class="skill-items">
-        <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
+        <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+        <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
+        <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
       </div>
     </div>
 
     <div class="skill-group">
       <div class="skill-group-title">Domain Knowledge</div>
       <div class="skill-items">
-        <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
-        <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
+        <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
+        <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
       </div>
     </div>
   </div>
@@ -924,6 +1008,8 @@
   </div>
 </section>
 
+</main>
+
 <footer>
   <span class="footer-name">Muhammad Reza</span>
   <span class="footer-copy">Fullstack Developer · Healthcare IT · Bandung, Indonesia</span>
@@ -953,27 +1039,26 @@
     observer.observe(skillsSection);
   }
 
-  // Scroll spy for navigation
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  // Scroll-spy for navigation links
+  const spyObserverOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50% 0px"
+  };
 
-  const scrollObserver = new IntersectionObserver((entries) => {
+  const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href').substring(1) === entry.target.id) {
-            link.classList.add('active');
-          }
+        const id = entry.target.getAttribute('id');
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
         });
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50% 0px'
-  });
+  }, spyObserverOptions);
 
-  sections.forEach(section => scrollObserver.observe(section));
+  document.querySelectorAll('section[id]').forEach(section => {
+    spyObserver.observe(section);
+  });
 </script>
 
 </body>
