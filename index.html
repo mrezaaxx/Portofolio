@@ -22,31 +22,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  *:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 1rem;
-    z-index: 1000;
-    transition: top 0.2s;
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  /* ACCESSIBILITY: Skip Link */
+  /* GLOBAL ACCESSIBILITY */
   .skip-link {
     position: absolute;
     top: -100px;
@@ -65,11 +41,16 @@
     top: 0;
   }
 
-  /* ACCESSIBILITY: Focus Indicators */
-  :focus-visible {
+  *:focus-visible,
+  a:focus-visible,
+  button:focus-visible,
+  .stack-tag:focus-visible,
+  .project-card:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
   }
+
+  html { scroll-behavior: smooth; }
 
   body {
     background: var(--bg);
@@ -141,33 +122,6 @@
     background: var(--accent);
   }
 
-  /* ACCESSIBILITY */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 8px;
-    z-index: 1000;
-    transition: top 0.3s;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.75rem;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  /* Improve keyboard focus visibility */
-  a:focus-visible,
-  button:focus-visible,
-  .stack-tag:focus-visible,
-  .project-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
 
   /* HERO */
   .hero {
@@ -659,22 +613,6 @@
     margin: 0 3rem;
   }
 
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.8rem 1.5rem;
-    z-index: 1000;
-    font-weight: 700;
-    text-decoration: none;
-    transition: top 0.2s;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
 
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -693,7 +631,7 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
+  <a class="nav-logo" href="#main-content" aria-label="Muhammad Reza - Home">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -705,7 +643,7 @@
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero" id="main-content">
+<section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <a href="#about" class="hero-badge">Available for Freelance</a>
@@ -1050,7 +988,13 @@
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         document.querySelectorAll('.nav-links a').forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
         });
       }
     });
