@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2026-05-15 - [Consolidated Global Accessibility Styles]
+**Learning:** For long static HTML files, consolidating accessibility-related styles (like skip-links and focus-indicators) into a dedicated "GLOBAL ACCESSIBILITY" section improves maintainability and ensures consistency. Programmatically managing 'aria-current' in tandem with visual active states ensures that navigation remains accessible to screen reader users.
+**Action:** Always verify that 'html { scroll-behavior: smooth; }' is preserved during style consolidation, as its removal causes a jarring UX regression on single-page sites. Ensure target elements for skip-links have 'tabindex="-1"' for consistent focus shift across browsers.

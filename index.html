@@ -6,47 +6,7 @@
 <title>Muhammad Reza — Fullstack Developer Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0f0d;
-    --surface: #111813;
-    --surface2: #182019;
-    --accent: #00e57a;
-    --accent-dim: #00c469;
-    --accent-glow: rgba(0, 229, 122, 0.12);
-    --text: #e8f0ec;
-    --text-muted: #7a9485;
-    --text-dim: #668073;
-    --border: rgba(0, 229, 122, 0.12);
-    --border-soft: rgba(255,255,255,0.06);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  *:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 1rem;
-    z-index: 1000;
-    transition: top 0.2s;
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  /* ACCESSIBILITY: Skip Link */
+  /* GLOBAL ACCESSIBILITY */
   .skip-link {
     position: absolute;
     top: -100px;
@@ -60,17 +20,26 @@
     text-decoration: none;
     transition: top 0.3s;
   }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  /* ACCESSIBILITY: Focus Indicators */
+  .skip-link:focus { top: 0; }
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 4px;
   }
-
+  :root {
+    --bg: #0a0f0d;
+    --surface: #111813;
+    --surface2: #182019;
+    --accent: #00e57a;
+    --accent-dim: #00c469;
+    --accent-glow: rgba(0, 229, 122, 0.12);
+    --text: #e8f0ec;
+    --text-muted: #7a9485;
+    --text-dim: #668073;
+    --border: rgba(0, 229, 122, 0.12);
+    --border-soft: rgba(255,255,255,0.06);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
   body {
     background: var(--bg);
     color: var(--text);
@@ -79,7 +48,6 @@
     line-height: 1.7;
     overflow-x: hidden;
   }
-
   /* Background grid */
   body::before {
     content: '';
@@ -92,7 +60,6 @@
     pointer-events: none;
     z-index: 0;
   }
-
   /* NAV */
   nav {
     position: fixed;
@@ -106,7 +73,6 @@
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
-
   .nav-logo {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -115,13 +81,11 @@
     letter-spacing: 0.05em;
     text-decoration: none;
   }
-
   .nav-links {
     display: flex;
     gap: 2rem;
     list-style: none;
   }
-
   .nav-links a {
     color: var(--text-muted);
     text-decoration: none;
@@ -130,7 +94,6 @@
     text-transform: uppercase;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--accent); }
   .nav-links a.active { color: var(--accent); position: relative; }
   .nav-links a.active::after {
@@ -140,35 +103,6 @@
     height: 1px;
     background: var(--accent);
   }
-
-  /* ACCESSIBILITY */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 8px;
-    z-index: 1000;
-    transition: top 0.3s;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.75rem;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  /* Improve keyboard focus visibility */
-  a:focus-visible,
-  button:focus-visible,
-  .stack-tag:focus-visible,
-  .project-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-
   /* HERO */
   .hero {
     position: relative;
@@ -179,7 +113,6 @@
     z-index: 1;
     overflow: hidden;
   }
-
   .hero-glow {
     position: absolute;
     width: 600px;
@@ -190,11 +123,9 @@
     right: -100px;
     pointer-events: none;
   }
-
   .hero-content {
     max-width: 900px;
   }
-
   .hero-badge {
     display: inline-flex;
     align-items: center;
@@ -212,12 +143,10 @@
     text-decoration: none;
     transition: all 0.2s;
   }
-
   .hero-badge:hover {
     background: var(--accent);
     color: var(--bg);
   }
-
   .hero-badge::before {
     content: '';
     width: 6px;
@@ -226,12 +155,10 @@
     background: var(--accent);
     animation: pulse 2s infinite;
   }
-
   @keyframes pulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.5; transform: scale(0.8); }
   }
-
   .hero h1 {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -241,11 +168,9 @@
     margin-bottom: 0.5rem;
     animation: fadeUp 0.6s ease 0.1s both;
   }
-
   .hero h1 span {
     color: var(--accent);
   }
-
   .hero-role {
     font-family: 'Fraunces', serif;
     font-weight: 300;
@@ -255,7 +180,6 @@
     margin-bottom: 2rem;
     animation: fadeUp 0.6s ease 0.2s both;
   }
-
   .hero-desc {
     font-size: 0.9rem;
     color: var(--text-muted);
@@ -264,16 +188,13 @@
     margin-bottom: 3rem;
     animation: fadeUp 0.6s ease 0.3s both;
   }
-
   .hero-stats {
     display: flex;
     gap: 3rem;
     margin-bottom: 3rem;
     animation: fadeUp 0.6s ease 0.4s both;
   }
-
   .stat-item {}
-
   .stat-num {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
@@ -281,7 +202,6 @@
     color: var(--accent);
     line-height: 1;
   }
-
   .stat-label {
     font-size: 0.7rem;
     color: var(--text-dim);
@@ -289,14 +209,12 @@
     text-transform: uppercase;
     margin-top: 0.2rem;
   }
-
   .hero-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
     animation: fadeUp 0.6s ease 0.5s both;
   }
-
   .stack-tag {
     padding: 0.3rem 0.8rem;
     border: 1px solid var(--border-soft);
@@ -307,59 +225,50 @@
     background: var(--surface);
     transition: all 0.2s;
   }
-
   .stack-tag:hover {
     border-color: var(--accent);
     color: var(--accent);
     background: var(--accent-glow);
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   /* SECTION */
   section {
     position: relative;
     z-index: 1;
     padding: 6rem 3rem;
   }
-
   .section-header {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 4rem;
   }
-
   .section-num {
     font-family: 'DM Mono', monospace;
     font-size: 0.7rem;
     color: var(--accent);
     letter-spacing: 0.15em;
   }
-
   .section-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
     font-size: 2rem;
     letter-spacing: -0.01em;
   }
-
   .section-line {
     flex: 1;
     height: 1px;
     background: var(--border);
   }
-
   /* PROJECTS GRID */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 1.5px;
   }
-
   .project-card {
     background: var(--surface);
     border: 1px solid var(--border-soft);
@@ -368,7 +277,6 @@
     position: relative;
     overflow: hidden;
   }
-
   .project-card::before {
     content: '';
     position: absolute;
@@ -379,35 +287,29 @@
     transform-origin: left;
     transition: transform 0.3s ease;
   }
-
   .project-card:hover {
     background: var(--surface2);
     border-color: var(--border);
     transform: translateY(-2px);
   }
-
   .project-card:hover::before {
     transform: scaleX(1);
   }
-
   .project-card.featured {
     grid-column: span 2;
     border-color: var(--border);
     background: var(--surface2);
   }
-
   .project-card.featured::before {
     transform: scaleX(1);
     background: linear-gradient(90deg, var(--accent), transparent);
   }
-
   .project-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1.5rem;
   }
-
   .project-icon {
     width: 44px;
     height: 44px;
@@ -419,7 +321,6 @@
     justify-content: center;
     font-size: 1.2rem;
   }
-
   .project-tasks {
     font-size: 0.7rem;
     color: var(--accent);
@@ -429,7 +330,6 @@
     padding: 0.25rem 0.6rem;
     border-radius: 2px;
   }
-
   .project-name {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -437,28 +337,24 @@
     margin-bottom: 0.3rem;
     color: var(--text);
   }
-
   .project-location {
     font-size: 0.7rem;
     color: var(--text-dim);
     letter-spacing: 0.08em;
     margin-bottom: 1.2rem;
   }
-
   .project-desc {
     font-size: 0.82rem;
     color: var(--text-muted);
     line-height: 1.8;
     margin-bottom: 1.5rem;
   }
-
   .project-features {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
   }
-
   .project-features li {
     font-size: 0.75rem;
     color: var(--text-muted);
@@ -466,32 +362,27 @@
     align-items: flex-start;
     gap: 0.6rem;
   }
-
   .project-features li::before {
     content: '→';
     color: var(--accent);
     flex-shrink: 0;
   }
-
   /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 1px;
   }
-
   .skill-group {
     background: var(--surface);
     border: 1px solid var(--border-soft);
     padding: 2rem;
     transition: all 0.25s;
   }
-
   .skill-group:hover {
     border-color: var(--border);
     background: var(--surface2);
   }
-
   .skill-group-title {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -504,20 +395,17 @@
     align-items: center;
     gap: 0.6rem;
   }
-
   .skill-group-title::before {
     content: '';
     width: 16px;
     height: 1px;
     background: var(--accent);
   }
-
   .skill-items {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
   }
-
   .skill-item {
     display: flex;
     align-items: center;
@@ -525,7 +413,6 @@
     font-size: 0.78rem;
     color: var(--text-muted);
   }
-
   .skill-bar {
     width: 80px;
     height: 2px;
@@ -533,7 +420,6 @@
     border-radius: 2px;
     overflow: hidden;
   }
-
   .skill-bar-fill {
     height: 100%;
     background: var(--accent);
@@ -541,7 +427,6 @@
     transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
     width: 0;
   }
-
   /* ABOUT / PROFILE */
   .about-grid {
     display: grid;
@@ -549,22 +434,18 @@
     gap: 3rem;
     align-items: start;
   }
-
   .about-text {
     font-size: 0.88rem;
     color: var(--text-muted);
     line-height: 2;
   }
-
   .about-text p { margin-bottom: 1.2rem; }
-
   .upwork-card {
     background: var(--surface2);
     border: 1px solid var(--border);
     padding: 2.5rem;
     position: relative;
   }
-
   .upwork-card::before {
     content: 'UPWORK PROFILE';
     position: absolute;
@@ -576,7 +457,6 @@
     background: var(--surface2);
     padding: 0 0.5rem;
   }
-
   .upwork-headline {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
@@ -584,39 +464,33 @@
     margin-bottom: 1rem;
     line-height: 1.4;
   }
-
   .upwork-bio {
     font-size: 0.8rem;
     color: var(--text-muted);
     line-height: 1.9;
     margin-bottom: 1.5rem;
   }
-
   .upwork-rate {
     display: flex;
     align-items: baseline;
     gap: 0.4rem;
     margin-bottom: 1.5rem;
   }
-
   .rate-num {
     font-family: 'Syne', sans-serif;
     font-weight: 800;
     font-size: 2rem;
     color: var(--accent);
   }
-
   .rate-label {
     font-size: 0.75rem;
     color: var(--text-dim);
   }
-
   .upwork-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
   }
-
   .upwork-tag {
     font-size: 0.68rem;
     padding: 0.2rem 0.6rem;
@@ -624,7 +498,6 @@
     color: var(--text-dim);
     border-radius: 2px;
   }
-
   /* FOOTER */
   footer {
     position: relative;
@@ -635,47 +508,25 @@
     justify-content: space-between;
     align-items: center;
   }
-
   .footer-name {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
     color: var(--accent);
   }
-
   .footer-copy {
     font-size: 0.72rem;
     color: var(--text-dim);
   }
-
   /* SCROLLBAR */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
-
   /* DIVIDER */
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border), transparent);
     margin: 0 3rem;
   }
-
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.8rem 1.5rem;
-    z-index: 1000;
-    font-weight: 700;
-    text-decoration: none;
-    transition: top 0.2s;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
@@ -689,23 +540,19 @@
 </style>
 </head>
 <body>
-
 <a href="#main-content" class="skip-link">Skip to content</a>
-
 <nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
+  <a class="nav-logo" href="#" aria-label="Muhammad Reza - Home">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#about">Profile</a></li>
   </ul>
 </nav>
-
 <!-- MAIN CONTENT -->
-<main id="main-content">
-
+<main id="main-content" tabindex="-1">
 <!-- HERO -->
-<section class="hero" id="main-content">
+<section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <a href="#about" class="hero-badge">Available for Freelance</a>
@@ -743,9 +590,7 @@
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
 <!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
@@ -753,9 +598,7 @@
     <h2 class="section-title">Projects</h2>
     <div class="section-line"></div>
   </div>
-
   <div class="projects-grid">
-
     <!-- RS OETOMO - Featured -->
     <div class="project-card featured">
       <div class="project-top">
@@ -775,7 +618,6 @@
         <li>Kiosk & Plasma Pendaftaran — patient self-service registration kiosk with queue calling system</li>
       </ul>
     </div>
-
     <!-- RS HAMORI -->
     <div class="project-card">
       <div class="project-top">
@@ -795,7 +637,6 @@
         <li>Plasma Ketersediaan Bed & Jadwal Operasi</li>
       </ul>
     </div>
-
     <!-- RSGM Maranatha -->
     <div class="project-card">
       <div class="project-top">
@@ -814,7 +655,6 @@
         <li>Plasma gabungan Pendaftaran & Farmasi — combined queue display with Socket.io</li>
       </ul>
     </div>
-
     <!-- RS PANDEGA -->
     <div class="project-card">
       <div class="project-top">
@@ -833,7 +673,6 @@
         <li>Fitur ceklis verifikasi SOAP — batch SOAP verification for doctors in one click</li>
       </ul>
     </div>
-
     <!-- RS PMI BOGOR -->
     <div class="project-card">
       <div class="project-top">
@@ -852,7 +691,6 @@
         <li>Notifikasi Order Bank Darah — real-time blood bank order alerts</li>
       </ul>
     </div>
-
     <!-- PT PMN GROUP -->
     <div class="project-card">
       <div class="project-top">
@@ -871,12 +709,9 @@
         <li>Print Setoran Kasir — cashier settlement detail with patient list printout</li>
       </ul>
     </div>
-
   </div>
 </section>
-
 <div class="divider"></div>
-
 <!-- SKILLS -->
 <section id="skills">
   <div class="section-header">
@@ -884,7 +719,6 @@
     <h2 class="section-title">Technical Skills</h2>
     <div class="section-line"></div>
   </div>
-
   <div class="skills-grid">
     <div class="skill-group">
       <div class="skill-group-title">Backend</div>
@@ -895,7 +729,6 @@
         <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
       </div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Database</div>
       <div class="skill-items">
@@ -904,7 +737,6 @@
         <div class="skill-item"><span>Report Queries</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
       </div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Frontend</div>
       <div class="skill-items">
@@ -914,7 +746,6 @@
         <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
       </div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Healthcare IT</div>
       <div class="skill-items">
@@ -924,7 +755,6 @@
         <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
       </div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Infrastructure</div>
       <div class="skill-items">
@@ -933,7 +763,6 @@
         <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
       </div>
     </div>
-
     <div class="skill-group">
       <div class="skill-group-title">Domain Knowledge</div>
       <div class="skill-items">
@@ -945,9 +774,7 @@
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
 <!-- ABOUT / UPWORK -->
 <section id="about">
   <div class="section-header">
@@ -955,7 +782,6 @@
     <h2 class="section-title">Profile</h2>
     <div class="section-line"></div>
   </div>
-
   <div class="about-grid">
     <div class="about-text">
       <p>
@@ -978,7 +804,6 @@
         📍 Bandung, Indonesia &nbsp;·&nbsp; Available for remote work worldwide
       </p>
     </div>
-
     <div class="upwork-card">
       <div class="upwork-headline">PHP Laravel Developer<br>Hospital Information Systems · REST API · PostgreSQL</div>
       <p class="upwork-bio">
@@ -1007,20 +832,16 @@
     </div>
   </div>
 </section>
-
 </main>
-
 <footer>
   <span class="footer-name">Muhammad Reza</span>
   <span class="footer-copy">Fullstack Developer · Healthcare IT · Bandung, Indonesia</span>
 </footer>
-
 <script>
   // Skill bar animation on scroll
   const observerOptions = {
     threshold: 0.2
   };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1033,33 +854,34 @@
       }
     });
   }, observerOptions);
-
   const skillsSection = document.querySelector('#skills');
   if (skillsSection) {
     observer.observe(skillsSection);
   }
-
   // Scroll-spy for navigation links
   const spyObserverOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -50% 0px"
   };
-
   const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         document.querySelectorAll('.nav-links a').forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
         });
       }
     });
   }, spyObserverOptions);
-
   document.querySelectorAll('section[id]').forEach(section => {
     spyObserver.observe(section);
   });
 </script>
-
 </body>
 </html>
