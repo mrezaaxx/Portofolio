@@ -114,6 +114,12 @@
     color: var(--accent);
     letter-spacing: 0.05em;
     text-decoration: none;
+    transition: filter 0.3s ease, letter-spacing 0.3s ease;
+  }
+
+  .nav-logo:hover {
+    filter: brightness(1.2);
+    letter-spacing: 0.15em;
   }
 
   .nav-links {
@@ -702,10 +708,10 @@
 </nav>
 
 <!-- MAIN CONTENT -->
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO -->
-<section class="hero" id="main-content">
+<section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <a href="#about" class="hero-badge">Available for Freelance</a>
@@ -1050,7 +1056,13 @@
       if (entry.isIntersecting) {
         const id = entry.target.getAttribute('id');
         document.querySelectorAll('.nav-links a').forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+          const isActive = link.getAttribute('href') === `#${id}`;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
         });
       }
     });
