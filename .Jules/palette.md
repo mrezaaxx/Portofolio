@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2025-05-25 - [Logo interaction and accessibility]
+**Learning:** For static portfolios, the navigation logo should provide clear interactive feedback (brightness/letter-spacing) to confirm focus/hover, and must include an ARIA label to provide context beyond the brand text for screen readers.
+**Action:** Always pair logo transitions with appropriate ARIA labels and ensure focus-visible states match hover states for keyboard parity.
