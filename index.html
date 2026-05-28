@@ -114,6 +114,13 @@
     color: var(--accent);
     letter-spacing: 0.05em;
     text-decoration: none;
+    transition: filter 0.3s ease, letter-spacing 0.3s ease;
+  }
+
+  .nav-logo:hover,
+  .nav-logo:focus-visible {
+    filter: brightness(1.2);
+    letter-spacing: 0.12em;
   }
 
   .nav-links {
@@ -693,7 +700,7 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
+  <a class="nav-logo" href="#" aria-label="Muhammad Reza - Home">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
