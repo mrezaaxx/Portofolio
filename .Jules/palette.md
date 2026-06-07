@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2025-05-24 - [Accessible Scroll-Spy and Navigation UX]
+**Learning:** For single-page applications with fixed headers, combining 'scroll-padding-top' with 'aria-current="location"' on scroll-spy links creates a significantly more accessible and intuitive navigation experience. It ensures that anchor targets are not obscured and provides immediate programmatic feedback to assistive technologies about the user's current position.
+**Action:** Always pair fixed navigation bars with 'scroll-padding-top' on the html/body and ensure scroll-spy logic manages the 'aria-current' attribute alongside visual active classes.
