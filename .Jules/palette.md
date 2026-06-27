@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2024-05-20 - [Accessibility State & Structural Integrity]
+**Learning:** For single-page navigation, visual active states are not enough; screen readers need `aria-current="location"` to understand where they are. Additionally, skip-links rely on unique IDs; duplicate IDs (like `main-content`) can cause unpredictable focus behavior in assistive technologies.
+**Action:** Always pair visual active classes (like `.active`) with `aria-current="location"` in scroll-spy logic, and ensure skip-link targets have globally unique IDs.
