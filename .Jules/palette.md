@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2026-07-02 - [Semantic ARIA labels for progress bars]
+**Learning:** When using role="progressbar", providing an aria-label that includes the numeric value (e.g., "Skill: 95%") creates redundant and noisy announcements in screen readers, as the value is already voiced via aria-valuenow.
+**Action:** Use aria-label only to provide the name/context of the bar (e.g., "PHP proficiency") and let the browser handle the numeric value announcement via aria-valuenow.
