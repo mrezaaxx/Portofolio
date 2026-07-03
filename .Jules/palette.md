@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2026-04-04 - [Fixed header scroll compensation]
+**Learning:** In single-page applications with a fixed navigation header, anchor navigation often results in the header overlapping the top of the target section. Using `scroll-padding-top` on the `html` element is a clean, CSS-only solution that ensures the target content is perfectly visible below the header.
+**Action:** Always apply `scroll-padding-top` equal to or slightly greater than the fixed header height on the `html` element to ensure a seamless anchor navigation experience.
