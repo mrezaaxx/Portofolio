@@ -1016,6 +1016,16 @@
 </footer>
 
 <script>
+  // Add ARIA labels to skill bars for accessibility
+  document.querySelectorAll('.skill-item').forEach(item => {
+    const span = item.querySelector('span');
+    const skillBar = item.querySelector('.skill-bar');
+    if (span && skillBar) {
+      const skillName = span.textContent.trim();
+      skillBar.setAttribute('aria-label', `${skillName} proficiency`);
+    }
+  });
+
   // Skill bar animation on scroll
   const observerOptions = {
     threshold: 0.2
