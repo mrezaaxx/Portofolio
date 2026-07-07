@@ -5,3 +5,7 @@
 ## 2026-04-03 - [Scroll-Spy for single-page navigation]
 **Learning:** For single-page portfolios, a scroll-spy implementation using IntersectionObserver with rootMargin: '0px 0px -50% 0px' provides a more natural feel for active link highlighting than a simple threshold, as it triggers when a section crosses the horizontal midline of the viewport.
 **Action:** Use rootMargin with a negative bottom value (e.g., -50%) for scroll-spy to ensure the active state changes precisely when the user has scrolled significantly into the next section.
+
+## 2024-05-20 - [Dynamic ARIA injection for repeated elements]
+**Learning:** In repositories with many repeated elements (like the 22 skill bars here), injecting ARIA attributes via a small JavaScript block is more maintainable and keeps the git diff significantly smaller than manually editing every HTML element, which is crucial when working under strict line-change constraints.
+**Action:** For large sets of similar elements, use a `querySelectorAll` loop in a script block to apply consistent accessibility enhancements dynamically.
