@@ -44,7 +44,10 @@
     top: 0;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
 
   /* ACCESSIBILITY: Skip Link */
   .skip-link {
@@ -693,7 +696,7 @@
 <a href="#main-content" class="skip-link">Skip to content</a>
 
 <nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
+  <a class="nav-logo" href="#" aria-label="MR_DEV - Back to top">MR_DEV</a>
   <ul class="nav-links">
     <li><a href="#projects">Projects</a></li>
     <li><a href="#skills">Skills</a></li>
@@ -702,10 +705,10 @@
 </nav>
 
 <!-- MAIN CONTENT -->
-<main id="main-content">
+<main id="main-content" tabindex="-1">
 
 <!-- HERO -->
-<section class="hero" id="main-content">
+<section class="hero">
   <div class="hero-glow"></div>
   <div class="hero-content">
     <a href="#about" class="hero-badge">Available for Freelance</a>
@@ -1058,6 +1061,15 @@
 
   document.querySelectorAll('section[id]').forEach(section => {
     spyObserver.observe(section);
+  });
+
+  // Accessibility: Add aria-labels to skill bars
+  document.querySelectorAll('.skill-item').forEach(item => {
+    const skillName = item.querySelector('span')?.textContent?.trim();
+    const skillBar = item.querySelector('.skill-bar');
+    if (skillName && skillBar) {
+      skillBar.setAttribute('aria-label', `${skillName} proficiency`);
+    }
   });
 </script>
 
