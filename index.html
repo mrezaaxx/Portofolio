@@ -450,6 +450,55 @@
 
   .about-actions { margin-top: var(--s-lg); }
 
+  /* CONTACT */
+  .contact-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-xxl);
+    align-items: center;
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xxl);
+  }
+
+  .contact-head h2 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: var(--w-display);
+    line-height: 1.13;
+    margin-bottom: var(--s-sm);
+  }
+
+  .contact-head p {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    color: var(--text-muted);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xs);
+  }
+
+  .contact-item {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    gap: var(--s-md);
+    min-height: 56px;
+    padding: 0 var(--s-lg);
+    background: var(--canvas);
+    border-radius: var(--r-full);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .contact-item:hover { background: var(--hairline-soft); }
+
+  .contact-label { font-size: 14px; color: var(--text-muted); }
+  .contact-value { font-weight: var(--w-title); overflow-wrap: anywhere; }
+  .contact-arrow { color: var(--text-muted); }
+
   /* SKILLS */
   .skills-grid {
     display: grid;
@@ -621,7 +670,9 @@
     color: var(--text-faint);
   }
 
-  .footer-links { display: flex; gap: var(--s-lg); list-style: none; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); list-style: none; }
+  .footer-contact { color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
+  .footer-contact:hover { color: var(--on-primary); }
   .footer-links a { text-decoration: none; color: var(--text-faint); transition: color 0.2s; }
   .footer-links a:hover { color: var(--on-primary); }
 
@@ -642,13 +693,18 @@
     .featured .project-features,
     .wide .project-features { padding-top: var(--s-lg); border-top: 1px solid var(--hairline); }
     .about-grid { grid-template-columns: 1fr; }
+    .contact-card { grid-template-columns: 1fr; gap: var(--s-xl); }
   }
 
   @media (max-width: 640px) {
     .hero { padding-top: calc(var(--s-section) + var(--s-xxl)); }
     .hero-stats { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
-    .project-card, .upwork-card { padding: var(--s-lg); }
+    .project-card, .upwork-card, .contact-card { padding: var(--s-lg); }
+    .contact-item { grid-template-columns: 1fr auto; row-gap: 0; padding: var(--s-sm) var(--s-lg); }
+    .contact-label { grid-column: 1; }
+    .contact-value { grid-column: 1; }
+    .contact-arrow { grid-column: 2; grid-row: 1 / span 2; }
     .featured .project-name { font-size: 24px; line-height: 1.25; }
     .hero-lead, .section-head p, .featured .project-desc, .about-text p:first-child { font-size: 18px; }
   }
@@ -672,7 +728,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#about">Profile</a></li>
     </ul>
-    <a class="btn btn-primary btn-sm" href="#about">Hire me</a>
+    <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
   </nav>
 </div>
 
@@ -685,7 +741,7 @@
     <h1>Muhammad Reza.</h1>
     <p class="hero-lead">
       <strong>Fullstack developer, healthcare IT specialist.</strong>
-      3.5+ years building web-based Hospital Information Systems (SIMRS) for 15+ hospitals
+      4+ years building web-based Hospital Information Systems (SIMRS) for 15+ hospitals
       and clinics across Indonesia — patient registration, pharmacy, warehouse,
       accounting, and full EMR workflows.
     </p>
@@ -704,8 +760,8 @@
         <div class="stat-label">Tasks completed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">3.5yr</div>
-        <div class="stat-label">Experience</div>
+        <div class="stat-num">4+ yr</div>
+        <div class="stat-label">Experience, since Sept 2022</div>
       </div>
     </div>
 
@@ -1042,13 +1098,13 @@
     <div class="about-grid">
       <div class="about-text">
         <p>
-          I'm a fullstack developer with 3.5 years of focused experience in web-based Hospital
+          I'm a fullstack developer with 4+ years of focused experience in web-based Hospital
           Information Systems (SIMRS). My work spans the entire hospital business flow — from
           patient registration, clinical documentation (SOAP, EMR), pharmacy and drug dispensing,
           warehouse and supply chain, to billing and accounting.
         </p>
         <p>
-          At Terakorp I work on the Teramedik SIMRS platform — both the native-PHP V5 line and the
+          Since September 2022 I've worked at Terakorp on the Teramedik SIMRS platform — both the native-PHP V5 line and the
           Laravel-based V6 — across 15+ hospital and clinic deployments, plus self-service
           patient kiosks. I've completed 1,300+ individual tasks ranging from complex reporting
           modules and real-time queue systems to integrations with national health platforms
@@ -1072,7 +1128,7 @@
         </div>
         <p class="upwork-headline">PHP Laravel Developer — Hospital Information Systems · REST API · PostgreSQL</p>
         <p class="upwork-bio">
-          With 3.5 years of hands-on experience in healthcare information system development,
+          With 4+ years of hands-on experience in healthcare information system development,
           I specialize in building and maintaining full-cycle hospital management solutions —
           from patient registration and clinical EMR workflows to pharmacy, warehouse, and
           accounting modules. Whether you need a robust web-based system, a well-structured API,
@@ -1099,6 +1155,35 @@
   </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <div class="contact-head">
+        <h2>Let's work together.</h2>
+        <p>Open to freelance projects and remote roles, so reach out anytime.</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-item" href="https://wa.me/6289654304740" target="_blank" rel="noopener">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+62 896-5430-4740</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" href="tel:+6289654304740">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+62 896-5430-4740</span>
+          <span class="contact-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="contact-item" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/mrezaaxx</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1110,9 +1195,10 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
-      <span>Available for remote work worldwide</span>
+      <a class="footer-contact" href="tel:+6289654304740">+62 896-5430-4740</a>
     </div>
   </div>
 </footer>

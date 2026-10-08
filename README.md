@@ -1,10 +1,10 @@
 # Muhammad Reza — Fullstack Developer Portfolio
 
-A professional portfolio showcasing 3.5+ years of experience in building web-based Hospital Information Systems (SIMRS) for clinical environments across Indonesia.
+A professional portfolio showcasing 4+ years of experience (since September 2022) in building web-based Hospital Information Systems (SIMRS) for clinical environments across Indonesia.
 
 ## 🚀 Overview
 
-I am a Fullstack Developer specializing in Healthcare IT. My expertise spans the entire hospital business workflow, including patient registration, Electronic Medical Records (EMR), pharmacy, warehouse, and billing. I have delivered solutions for over 8 hospitals, completing more than 1,300 technical tasks.
+I am a Fullstack Developer specializing in Healthcare IT. My expertise spans the entire hospital business workflow, including patient registration, Electronic Medical Records (EMR), pharmacy, warehouse, and billing. I have delivered solutions for 15+ hospitals and clinics, completing more than 1,300 technical tasks.
 
 - **📍 Location:** Bandung, Indonesia
 - **💼 Status:** Available for Freelance / Remote Work
