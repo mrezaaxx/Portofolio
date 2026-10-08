@@ -4,687 +4,629 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muhammad Reza — Fullstack Developer Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Fraunces:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
 <style>
+  /* Design tokens — see DESIGN-mobbin.md */
   :root {
-    --bg: #0a0f0d;
-    --surface: #111813;
-    --surface2: #182019;
-    --accent: #00e57a;
-    --accent-dim: #00c469;
-    --accent-glow: rgba(0, 229, 122, 0.12);
-    --text: #e8f0ec;
-    --text-muted: #7a9485;
-    --text-dim: #668073;
-    --border: rgba(0, 229, 122, 0.12);
-    --border-soft: rgba(255,255,255,0.06);
+    --primary: #141414;
+    --on-primary: #ffffff;
+    --ink: #141414;
+    --ink-soft: #262626;
+    --text-muted: #707070;
+    --text-faint: #adadad;
+    --canvas: #ffffff;
+    --canvas-soft: #f3f3f3;
+    --field: #f0f0f0;
+    --hairline-soft: #f0f0f0;
+    --hairline: #e0e0e0;
+    --accent: #0066ff;
+
+    --font: 'Inter', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    --w-display: 650;
+    --w-title: 600;
+    --w-body: 450;
+    --w-light: 300;
+
+    --r-sm: 16px;
+    --r-md: 24px;
+    --r-full: 9999px;
+
+    --s-xxs: 4px;
+    --s-xs: 8px;
+    --s-sm: 12px;
+    --s-md: 16px;
+    --s-lg: 24px;
+    --s-xl: 32px;
+    --s-xxl: 48px;
+    --s-section: 80px;
+    --s-section-lg: 120px;
+
+    --container: 1200px;
+    --gutter: 32px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  *:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
-
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 1rem;
-    z-index: 1000;
-    transition: top 0.2s;
-    text-decoration: none;
-    font-weight: 700;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
   html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    font-weight: var(--w-body);
+    line-height: 1.38;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  :focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 3px;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
 
   /* ACCESSIBILITY: Skip Link */
   .skip-link {
     position: absolute;
     top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.8rem 1.5rem;
-    z-index: 1000;
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
+    left: var(--s-md);
+    background: var(--primary);
+    color: var(--on-primary);
+    padding: var(--s-sm) var(--s-lg);
+    border-radius: var(--r-full);
+    font-weight: var(--w-title);
     text-decoration: none;
-    transition: top 0.3s;
+    z-index: 1000;
+    transition: top 0.2s;
   }
 
-  .skip-link:focus {
-    top: 0;
+  .skip-link:focus { top: var(--s-md); }
+
+  /* BUTTONS */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s-xs);
+    height: 44px;
+    padding: 0 var(--s-md);
+    border-radius: var(--r-full);
+    font: var(--w-title) 16px/1.38 var(--font);
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
   }
 
-  /* ACCESSIBILITY: Focus Indicators */
-  :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
+  .btn-primary { background: var(--primary); color: var(--on-primary); }
+  .btn-primary:hover { background: var(--ink-soft); }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Mono', monospace;
-    font-size: 14px;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+  .btn-outline { background: var(--canvas); color: var(--ink); border-color: var(--hairline); }
+  .btn-outline:hover { border-color: var(--ink); }
 
-  /* Background grid */
-  body::before {
-    content: '';
+  .btn-soft { background: var(--canvas-soft); color: var(--ink); }
+  .btn-soft:hover { background: var(--hairline); }
+
+  .btn-sm { height: 36px; font-size: 14px; }
+
+  /* NAV — floating pill */
+  .nav-wrap {
     position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,229,122,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,122,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
+    top: var(--s-md);
+    left: 0;
+    right: 0;
     z-index: 100;
     display: flex;
+    justify-content: center;
+    padding: 0 var(--s-md);
+    pointer-events: none;
+  }
+
+  nav {
+    pointer-events: auto;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(10,15,13,0.85);
+    gap: var(--s-xl);
+    width: 100%;
+    max-width: 720px;
+    padding: var(--s-xs) var(--s-xs) var(--s-xs) var(--s-lg);
+    background: rgba(243, 243, 243, 0.88);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--r-full);
   }
 
   .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    color: var(--accent);
-    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: var(--s-xs);
+    font-weight: var(--w-display);
+    font-size: 16px;
     text-decoration: none;
+    margin-right: auto;
+  }
+
+  .nav-logo-mark {
+    width: 28px;
+    height: 28px;
+    border-radius: 30%;
+    background: var(--primary);
+    color: var(--on-primary);
+    display: grid;
+    place-items: center;
+    font-size: 12px;
+    font-weight: var(--w-display);
   }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: var(--s-lg);
     list-style: none;
   }
 
   .nav-links a {
-    color: var(--text-muted);
+    font-weight: var(--w-title);
+    font-size: 15px;
     text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    color: var(--text-muted);
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--accent); }
-  .nav-links a.active { color: var(--accent); position: relative; }
-  .nav-links a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0; right: 0;
-    height: 1px;
-    background: var(--accent);
-  }
-
-  /* ACCESSIBILITY */
-  .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 8px;
-    z-index: 1000;
-    transition: top 0.3s;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.75rem;
-  }
-
-  .skip-link:focus {
-    top: 0;
-  }
-
-  /* Improve keyboard focus visibility */
-  a:focus-visible,
-  button:focus-visible,
-  .stack-tag:focus-visible,
-  .project-card:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
-  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--ink); }
 
   /* HERO */
   .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 7rem 3rem 4rem;
-    z-index: 1;
-    overflow: hidden;
-  }
-
-  .hero-glow {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,229,122,0.07) 0%, transparent 70%);
-    top: -100px;
-    right: -100px;
-    pointer-events: none;
-  }
-
-  .hero-content {
-    max-width: 900px;
+    padding: calc(var(--s-section-lg) + var(--s-xxl)) 0 var(--s-section);
+    text-align: center;
   }
 
   .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--accent-glow);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 0.35rem 0.9rem;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease forwards;
+    gap: var(--s-xs);
+    height: 32px;
+    padding: 0 var(--s-sm);
+    border-radius: var(--r-full);
+    background: var(--canvas-soft);
+    font-size: 12px;
+    font-weight: var(--w-title);
+    line-height: 1.33;
     text-decoration: none;
-    transition: all 0.2s;
+    margin-bottom: var(--s-xl);
+    transition: background-color 0.2s;
   }
 
-  .hero-badge:hover {
+  .hero-badge:hover { background: var(--hairline); }
+
+  .hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: var(--r-full);
     background: var(--accent);
-    color: var(--bg);
-  }
-
-  .hero-badge::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.8); }
   }
 
   .hero h1 {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(48px, 9vw, 80px);
+    font-weight: var(--w-display);
     line-height: 1;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-    animation: fadeUp 0.6s ease 0.1s both;
+    margin-bottom: var(--s-lg);
   }
 
-  .hero h1 span {
-    color: var(--accent);
+  .hero-lead {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    line-height: 1.38;
+    color: var(--ink);
+    max-width: 640px;
+    margin: 0 auto var(--s-xl);
   }
 
-  .hero-role {
-    font-family: 'Fraunces', serif;
-    font-weight: 300;
-    font-style: italic;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease 0.2s both;
-  }
+  .hero-lead strong { font-weight: var(--w-title); }
 
-  .hero-desc {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    max-width: 560px;
-    line-height: 1.9;
-    margin-bottom: 3rem;
-    animation: fadeUp 0.6s ease 0.3s both;
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--s-sm);
+    flex-wrap: wrap;
+    margin-bottom: var(--s-section);
   }
 
   .hero-stats {
-    display: flex;
-    gap: 3rem;
-    margin-bottom: 3rem;
-    animation: fadeUp 0.6s ease 0.4s both;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+    max-width: 840px;
+    margin: 0 auto var(--s-xxl);
   }
 
-  .stat-item {}
+  .stat-item {
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xl) var(--s-lg);
+  }
 
   .stat-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 2.2rem;
-    color: var(--accent);
+    font-size: clamp(40px, 6vw, 56px);
+    font-weight: var(--w-display);
     line-height: 1;
+    margin-bottom: var(--s-xs);
   }
 
   .stat-label {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.2rem;
+    font-size: 14px;
+    line-height: 1.43;
+    color: var(--text-muted);
   }
 
-  .hero-stack {
+  .stack-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
-    animation: fadeUp 0.6s ease 0.5s both;
+    justify-content: center;
+    gap: var(--s-xs);
+    max-width: 840px;
+    margin: 0 auto;
   }
 
-  .stack-tag {
-    padding: 0.3rem 0.8rem;
-    border: 1px solid var(--border-soft);
-    border-radius: 2px;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    background: var(--surface);
-    transition: all 0.2s;
-  }
-
-  .stack-tag:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    background: var(--accent-glow);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* SECTION */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 6rem 3rem;
-  }
-
-  .section-header {
-    display: flex;
+  .chip {
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 4rem;
+    height: 32px;
+    padding: 0 var(--s-sm);
+    border-radius: var(--r-full);
+    border: 1px solid var(--hairline);
+    background: var(--canvas);
+    font-size: 14px;
+    line-height: 1.43;
+    color: var(--ink);
   }
 
-  .section-num {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.15em;
+  /* SECTIONS */
+  section { padding: var(--s-section) 0; scroll-margin-top: var(--s-section); }
+
+  .section-head { margin-bottom: var(--s-xxl); max-width: 720px; }
+
+  .section-head h2 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: var(--w-display);
+    line-height: 1.13;
+    margin-bottom: var(--s-sm);
   }
 
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: -0.01em;
+  .section-head p {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    color: var(--text-muted);
   }
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* PROJECTS GRID */
+  /* PROJECTS */
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-md);
   }
 
   .project-card {
-    background: var(--surface);
-    border: 1px solid var(--border-soft);
-    padding: 2.5rem;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
+    background: var(--canvas);
+    border: 1px solid var(--hairline-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
+    transition: border-color 0.2s;
   }
 
-  .project-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-
-  .project-card:hover {
-    background: var(--surface2);
-    border-color: var(--border);
-    transform: translateY(-2px);
-  }
-
-  .project-card:hover::before {
-    transform: scaleX(1);
-  }
+  .project-card:hover { border-color: var(--hairline); }
 
   .project-card.featured {
-    grid-column: span 2;
-    border-color: var(--border);
-    background: var(--surface2);
+    background: var(--canvas-soft);
+    border-color: transparent;
   }
 
-  .project-card.featured::before {
-    transform: scaleX(1);
-    background: linear-gradient(90deg, var(--accent), transparent);
+  .project-card.featured,
+  .project-card.wide {
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-xl) var(--s-xxl);
   }
 
   .project-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--s-lg);
   }
 
   .project-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 4px;
-    background: var(--accent-glow);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
+    width: 56px;
+    height: 56px;
+    border-radius: 30%;
+    background: var(--canvas-soft);
+    display: grid;
+    place-items: center;
+    font-size: 26px;
   }
+
+  .featured .project-icon { background: var(--canvas); }
 
   .project-tasks {
-    font-size: 0.7rem;
-    color: var(--accent);
-    letter-spacing: 0.1em;
-    background: var(--accent-glow);
-    border: 1px solid var(--border);
-    padding: 0.25rem 0.6rem;
-    border-radius: 2px;
+    display: inline-flex;
+    align-items: center;
+    height: 28px;
+    padding: 0 var(--s-sm);
+    border-radius: var(--r-full);
+    background: var(--canvas-soft);
+    font-size: 12px;
+    font-weight: var(--w-title);
+    line-height: 1.33;
   }
+
+  .featured .project-tasks { background: var(--canvas); }
 
   .project-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.15rem;
-    margin-bottom: 0.3rem;
-    color: var(--text);
+    font-size: 24px;
+    font-weight: var(--w-display);
+    line-height: 1.25;
+    margin-bottom: var(--s-xxs);
   }
 
+  .featured .project-name { font-size: 32px; line-height: 1.13; }
+
   .project-location {
-    font-size: 0.7rem;
-    color: var(--text-dim);
-    letter-spacing: 0.08em;
-    margin-bottom: 1.2rem;
+    font-size: 14px;
+    line-height: 1.43;
+    color: var(--text-muted);
+    margin-bottom: var(--s-md);
   }
 
   .project-desc {
-    font-size: 0.82rem;
     color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--s-lg);
   }
+
+  .featured .project-desc { font-size: 20px; font-weight: var(--w-light); color: var(--ink); }
 
   .project-features {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--s-sm);
+    padding-top: var(--s-lg);
+    border-top: 1px solid var(--hairline);
   }
 
+  .featured .project-features,
+  .wide .project-features { border-top: 0; padding-top: 0; align-self: center; }
+
   .project-features li {
-    font-size: 0.75rem;
-    color: var(--text-muted);
     display: flex;
-    align-items: flex-start;
-    gap: 0.6rem;
+    gap: var(--s-sm);
+    font-size: 14px;
+    line-height: 1.43;
   }
 
   .project-features li::before {
     content: '→';
-    color: var(--accent);
+    color: var(--text-faint);
     flex-shrink: 0;
   }
 
   /* SKILLS */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
   }
 
   .skill-group {
-    background: var(--surface);
-    border: 1px solid var(--border-soft);
-    padding: 2rem;
-    transition: all 0.25s;
-  }
-
-  .skill-group:hover {
-    border-color: var(--border);
-    background: var(--surface2);
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-lg);
   }
 
   .skill-group-title {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .skill-group-title::before {
-    content: '';
-    width: 16px;
-    height: 1px;
-    background: var(--accent);
+    font-size: 20px;
+    font-weight: var(--w-title);
+    line-height: 1.3;
+    margin-bottom: var(--s-lg);
   }
 
   .skill-items {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
+    gap: var(--s-md);
   }
 
   .skill-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 96px;
     align-items: center;
-    justify-content: space-between;
-    font-size: 0.78rem;
-    color: var(--text-muted);
+    gap: var(--s-md);
+    font-size: 14px;
+    line-height: 1.43;
   }
 
   .skill-bar {
-    width: 80px;
-    height: 2px;
-    background: var(--border-soft);
-    border-radius: 2px;
+    height: 6px;
+    background: var(--canvas);
+    border-radius: var(--r-full);
     overflow: hidden;
   }
 
   .skill-bar-fill {
     height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
     width: 0;
+    background: var(--ink);
+    border-radius: var(--r-full);
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  /* ABOUT / PROFILE */
+  /* PROFILE */
   .about-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.1fr 1fr;
+    gap: var(--s-xxl);
     align-items: start;
   }
 
-  .about-text {
-    font-size: 0.88rem;
-    color: var(--text-muted);
-    line-height: 2;
-  }
+  .about-text p { margin-bottom: var(--s-md); color: var(--ink); }
+  .about-text p:first-child { font-size: 20px; font-weight: var(--w-light); }
 
-  .about-text p { margin-bottom: 1.2rem; }
+  .about-location {
+    display: inline-flex;
+    margin-top: var(--s-md);
+    font-size: 14px;
+    color: var(--text-muted);
+  }
 
   .upwork-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    padding: 2.5rem;
-    position: relative;
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
   }
 
-  .upwork-card::before {
-    content: 'UPWORK PROFILE';
-    position: absolute;
-    top: -0.6rem;
-    left: 1.5rem;
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    color: var(--accent);
-    background: var(--surface2);
-    padding: 0 0.5rem;
+  .upwork-top {
+    display: flex;
+    align-items: center;
+    gap: var(--s-xs);
+    margin-bottom: var(--s-md);
+  }
+
+  .upwork-top h3 {
+    font-size: 24px;
+    font-weight: var(--w-display);
+    line-height: 1.25;
+  }
+
+  .badge-accent {
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    padding: 0 10px;
+    border-radius: var(--r-full);
+    background: var(--accent);
+    color: var(--on-primary);
+    font-size: 12px;
+    font-weight: var(--w-title);
+    line-height: 1.33;
   }
 
   .upwork-headline {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
+    font-size: 16px;
+    font-weight: var(--w-title);
+    margin-bottom: var(--s-sm);
   }
 
   .upwork-bio {
-    font-size: 0.8rem;
+    font-size: 14px;
+    line-height: 1.43;
     color: var(--text-muted);
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--s-lg);
   }
 
   .upwork-rate {
     display: flex;
     align-items: baseline;
-    gap: 0.4rem;
-    margin-bottom: 1.5rem;
+    gap: var(--s-xs);
+    padding: var(--s-lg) 0;
+    margin-bottom: var(--s-lg);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
   }
 
   .rate-num {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 2rem;
-    color: var(--accent);
+    font-size: 44px;
+    font-weight: var(--w-display);
+    line-height: 1;
   }
 
-  .rate-label {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-  }
+  .rate-label { font-size: 14px; color: var(--text-muted); }
 
   .upwork-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: var(--s-xs);
   }
 
-  .upwork-tag {
-    font-size: 0.68rem;
-    padding: 0.2rem 0.6rem;
-    border: 1px solid var(--border-soft);
-    color: var(--text-dim);
-    border-radius: 2px;
-  }
-
-  /* FOOTER */
+  /* FOOTER — inverse band */
   footer {
-    position: relative;
-    z-index: 1;
-    padding: 3rem;
-    border-top: 1px solid var(--border-soft);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin-top: var(--s-section);
+    background: var(--ink);
+    color: var(--on-primary);
+    border-radius: var(--r-md) var(--r-md) 0 0;
+    padding: var(--s-section) 0 var(--s-xxl);
   }
 
   .footer-name {
-    font-family: 'Syne', sans-serif;
-    font-weight: 700;
-    color: var(--accent);
+    font-size: clamp(48px, 9vw, 80px);
+    font-weight: var(--w-display);
+    line-height: 1;
+    margin-bottom: var(--s-md);
   }
 
-  .footer-copy {
-    font-size: 0.72rem;
-    color: var(--text-dim);
+  .footer-tagline {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    color: var(--text-faint);
+    margin-bottom: var(--s-xxl);
   }
 
-  /* SCROLLBAR */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 4px; }
-
-  /* DIVIDER */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0 3rem;
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--s-md);
+    flex-wrap: wrap;
+    padding-top: var(--s-lg);
+    border-top: 1px solid var(--ink-soft);
+    font-size: 14px;
+    color: var(--text-faint);
   }
 
-  .skip-link {
-    position: absolute;
-    top: -100px;
-    left: 0;
-    background: var(--accent);
-    color: var(--bg);
-    padding: 0.8rem 1.5rem;
-    z-index: 1000;
-    font-weight: 700;
-    text-decoration: none;
-    transition: top 0.2s;
+  .footer-links { display: flex; gap: var(--s-lg); list-style: none; }
+  .footer-links a { text-decoration: none; color: var(--text-faint); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--on-primary); }
+
+  footer :focus-visible { outline-color: var(--on-primary); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
-  .skip-link:focus {
-    top: 0;
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; }
+  @media (max-width: 840px) {
+    :root { --gutter: 16px; }
     .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 3rem; }
-    section { padding: 4rem 1.5rem; }
-    .hero-stats { gap: 1.5rem; }
-    .project-card.featured { grid-column: span 1; }
+    nav { max-width: 480px; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured,
+    .project-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+    .featured .project-features,
+    .wide .project-features { padding-top: var(--s-lg); border-top: 1px solid var(--hairline); }
     .about-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  @media (max-width: 640px) {
+    .hero { padding-top: calc(var(--s-section) + var(--s-xxl)); }
+    .hero-stats { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .project-card, .upwork-card { padding: var(--s-lg); }
+    .featured .project-name { font-size: 24px; line-height: 1.25; }
+    .hero-lead, .section-head p, .featured .project-desc, .about-text p:first-child { font-size: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; }
   }
 </style>
 </head>
@@ -692,318 +634,327 @@
 
 <a href="#main-content" class="skip-link">Skip to content</a>
 
-<nav>
-  <a class="nav-logo" href="#">MR_DEV</a>
-  <ul class="nav-links">
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#about">Profile</a></li>
-  </ul>
-</nav>
+<div class="nav-wrap">
+  <nav aria-label="Primary">
+    <a class="nav-logo" href="#top"><span class="nav-logo-mark" aria-hidden="true">MR</span>Muhammad Reza</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#about">Profile</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="#about">Hire me</a>
+  </nav>
+</div>
 
-<!-- MAIN CONTENT -->
 <main id="main-content">
 
 <!-- HERO -->
-<section class="hero" id="main-content">
-  <div class="hero-glow"></div>
-  <div class="hero-content">
-    <a href="#about" class="hero-badge">Available for Freelance</a>
-    <h1>Muhammad<br><span>Reza</span></h1>
-    <p class="hero-role">Fullstack Developer · Healthcare IT Specialist</p>
-    <p class="hero-desc">
+<header class="hero" id="top">
+  <div class="container">
+    <a href="#about" class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>Available for freelance</a>
+    <h1>Muhammad Reza.</h1>
+    <p class="hero-lead">
+      <strong>Fullstack developer, healthcare IT specialist.</strong>
       3.5+ years building web-based Hospital Information Systems (SIMRS) for real clinical
-      environments across Indonesia — covering patient registration, pharmacy, warehouse,
+      environments across Indonesia — patient registration, pharmacy, warehouse,
       accounting, and full EMR workflows.
     </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#projects">View projects</a>
+      <a class="btn btn-outline" href="#about">See profile</a>
+    </div>
+
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">8+</div>
-        <div class="stat-label">Hospitals Delivered</div>
+        <div class="stat-label">Hospitals delivered</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">1300+</div>
-        <div class="stat-label">Tasks Completed</div>
+        <div class="stat-num">1,300+</div>
+        <div class="stat-label">Tasks completed</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">3.5yr</div>
         <div class="stat-label">Experience</div>
       </div>
     </div>
-    <div class="hero-stack">
-      <span class="stack-tag">PHP</span>
-      <span class="stack-tag">Laravel</span>
-      <span class="stack-tag">PostgreSQL</span>
-      <span class="stack-tag">REST API</span>
-      <span class="stack-tag">Socket.io</span>
-      <span class="stack-tag">SatuSehat</span>
-      <span class="stack-tag">BPJS Kesehatan</span>
-      <span class="stack-tag">Python</span>
-      <span class="stack-tag">HTML/CSS/JS</span>
+
+    <div class="stack-row" aria-label="Tech stack">
+      <span class="chip">PHP</span>
+      <span class="chip">Laravel</span>
+      <span class="chip">PostgreSQL</span>
+      <span class="chip">REST API</span>
+      <span class="chip">Socket.io</span>
+      <span class="chip">SatuSehat</span>
+      <span class="chip">BPJS Kesehatan</span>
+      <span class="chip">Python</span>
+      <span class="chip">HTML/CSS/JS</span>
     </div>
   </div>
-</section>
-
-<div class="divider"></div>
+</header>
 
 <!-- PROJECTS -->
 <section id="projects">
-  <div class="section-header">
-    <span class="section-num">01</span>
-    <h2 class="section-title">Projects</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="projects-grid">
-
-    <!-- RS OETOMO - Featured -->
-    <div class="project-card featured">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
-        <span class="project-tasks">330 Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RS Oetomo Bojongsoang</div>
-      <div class="project-location">📍 Bojongsoang, Bandung · Jawa Barat</div>
-      <p class="project-desc">
-        Full-scope hospital information system covering all clinical and administrative flows.
-        One of the largest project deployments in terms of feature volume and complexity.
-      </p>
-      <ul class="project-features">
-        <li>Laporan Akomodasi Tempat Tidur Rawat Inap — tracks every bed movement per patient across their entire stay</li>
-        <li>Plasma Poliklinik — real-time queue display using Socket.io, triggered from the doctor's worklist</li>
-        <li>Merge PDF Berkas Medis — Python-based service to consolidate multiple medical documents into a single PDF</li>
-        <li>Kiosk & Plasma Pendaftaran — patient self-service registration kiosk with queue calling system</li>
-      </ul>
+  <div class="container">
+    <div class="section-head">
+      <h2>Selected projects.</h2>
+      <p>Hospital systems shipped to production across West Java and North Sumatra.</p>
     </div>
 
-    <!-- RS HAMORI -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Medical Clinic">🏨</div>
-        <span class="project-tasks">318 Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RS Hamori Subang</div>
-      <div class="project-location">📍 Subang · Jawa Barat</div>
-      <p class="project-desc">
-        Complex multi-module SIMRS with third-party integrations and advanced queue management features.
-      </p>
-      <ul class="project-features">
-        <li>Bridging LIS (Laboratory Information System) — bidirectional API integration for lab orders and results</li>
-        <li>Plasma Perawat Poliklinik — nurse queue display with SpeechSynthesis voice calling</li>
-        <li>Plasma Farmasi (Umum, Asuransi, BPJS) — separate pharmacy queues per patient type</li>
-        <li>Estimasi Pendapatan — revenue charts per date and per month (Umum, Asuransi, BPJS)</li>
-        <li>Plasma Ketersediaan Bed & Jadwal Operasi</li>
-      </ul>
-    </div>
+    <div class="projects-grid">
 
-    <!-- RSGM Maranatha -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Dental Clinic">🦷</div>
-        <span class="project-tasks">196 Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RSGM Maranatha</div>
-      <div class="project-location">📍 Bandung · Jawa Barat</div>
-      <p class="project-desc">
-        Dental hospital system with specialized clinical forms and integrated queue management.
-      </p>
-      <ul class="project-features">
-        <li>Formulir Asesmen Medis Poliklinik Gigi — with intra-oral examination charting (tooth diagram)</li>
-        <li>Formulir Resume Medis — auto-populated from nurse/doctor SOAP inputs</li>
-        <li>Tracer Rekam Medis — auto-print trigger on patient registration via APM or loket</li>
-        <li>Plasma gabungan Pendaftaran & Farmasi — combined queue display with Socket.io</li>
-      </ul>
-    </div>
+      <!-- RS OETOMO - Featured -->
+      <article class="project-card featured">
+        <div>
+          <div class="project-top">
+            <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
+            <span class="project-tasks">330 tasks</span>
+          </div>
+          <h3 class="project-name">SIMRS RS Oetomo Bojongsoang</h3>
+          <div class="project-location">Bojongsoang, Bandung · Jawa Barat</div>
+          <p class="project-desc">
+            Full-scope hospital information system covering all clinical and administrative flows.
+            One of the largest project deployments in terms of feature volume and complexity.
+          </p>
+        </div>
+        <ul class="project-features">
+          <li>Laporan Akomodasi Tempat Tidur Rawat Inap — tracks every bed movement per patient across their entire stay</li>
+          <li>Plasma Poliklinik — real-time queue display using Socket.io, triggered from the doctor's worklist</li>
+          <li>Merge PDF Berkas Medis — Python-based service to consolidate multiple medical documents into a single PDF</li>
+          <li>Kiosk & Plasma Pendaftaran — patient self-service registration kiosk with queue calling system</li>
+        </ul>
+      </article>
 
-    <!-- RS PANDEGA -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Resort Hospital">🌴</div>
-        <span class="project-tasks">177 Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RSUD Pandega Pangandaran</div>
-      <div class="project-location">📍 Pangandaran · Jawa Barat</div>
-      <p class="project-desc">
-        Regional public hospital system with SatuSehat integration and custom pharmacy labeling.
-      </p>
-      <ul class="project-features">
-        <li>Bridging LIS via file sharing — TXT-based order exchange with PDF result return</li>
-        <li>Mapping Kode KFA — drug code mapping for SatuSehat data submission</li>
-        <li>Print Etiket Farmasi — FPDF-based thermal printer label printing</li>
-        <li>Fitur ceklis verifikasi SOAP — batch SOAP verification for doctors in one click</li>
-      </ul>
-    </div>
+      <!-- RS HAMORI -->
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Medical clinic">🏨</div>
+          <span class="project-tasks">318 tasks</span>
+        </div>
+        <h3 class="project-name">SIMRS RS Hamori Subang</h3>
+        <div class="project-location">Subang · Jawa Barat</div>
+        <p class="project-desc">
+          Complex multi-module SIMRS with third-party integrations and advanced queue management features.
+        </p>
+        <ul class="project-features">
+          <li>Bridging LIS (Laboratory Information System) — bidirectional API integration for lab orders and results</li>
+          <li>Plasma Perawat Poliklinik — nurse queue display with SpeechSynthesis voice calling</li>
+          <li>Plasma Farmasi (Umum, Asuransi, BPJS) — separate pharmacy queues per patient type</li>
+          <li>Estimasi Pendapatan — revenue charts per date and per month (Umum, Asuransi, BPJS)</li>
+          <li>Plasma Ketersediaan Bed & Jadwal Operasi</li>
+        </ul>
+      </article>
 
-    <!-- RS PMI BOGOR -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Red Cross">🔴</div>
-        <span class="project-tasks">103 Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RS PMI Bogor</div>
-      <div class="project-location">📍 Bogor · Jawa Barat</div>
-      <p class="project-desc">
-        Feature expansion and reporting module development for an established hospital system.
-      </p>
-      <ul class="project-features">
-        <li>Laporan Sensus Harian IGD — Emergency department daily census report</li>
-        <li>Laporan Capaian Kegiatan — 10-category service summary by payer type</li>
-        <li>Formulir SGA & Pengkajian Gizi Geriatri — complex nutritional assessment forms</li>
-        <li>Notifikasi Order Bank Darah — real-time blood bank order alerts</li>
-      </ul>
-    </div>
+      <!-- RSGM Maranatha -->
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Dental clinic">🦷</div>
+          <span class="project-tasks">196 tasks</span>
+        </div>
+        <h3 class="project-name">SIMRS RSGM Maranatha</h3>
+        <div class="project-location">Bandung · Jawa Barat</div>
+        <p class="project-desc">
+          Dental hospital system with specialized clinical forms and integrated queue management.
+        </p>
+        <ul class="project-features">
+          <li>Formulir Asesmen Medis Poliklinik Gigi — with intra-oral examination charting (tooth diagram)</li>
+          <li>Formulir Resume Medis — auto-populated from nurse/doctor SOAP inputs</li>
+          <li>Tracer Rekam Medis — auto-print trigger on patient registration via APM or loket</li>
+          <li>Plasma gabungan Pendaftaran & Farmasi — combined queue display with Socket.io</li>
+        </ul>
+      </article>
 
-    <!-- PT PMN GROUP -->
-    <div class="project-card">
-      <div class="project-top">
-        <div class="project-icon" role="img" aria-label="Park Hospital">🌳</div>
-        <span class="project-tasks">186+ Tasks</span>
-      </div>
-      <div class="project-name">SIMRS RS PT PMN Group</div>
-      <div class="project-location">📍 Sumatera Utara (Pabatu, Balimbingan, Laras)</div>
-      <p class="project-desc">
-        Multi-hospital group deployment — 3 hospitals sharing a unified codebase with custom adjustments per site.
-      </p>
-      <ul class="project-features">
-        <li>Mapping Dokter JKN — direct BPJS Kesehatan API integration for doctor-JKN mapping</li>
-        <li>Laporan BOR Harian Rawat Inap — daily bed occupancy rate report</li>
-        <li>SEP BPJS penyesuaian tujuan kunjungan — based on BPJS trust mark API spec</li>
-        <li>Print Setoran Kasir — cashier settlement detail with patient list printout</li>
-      </ul>
-    </div>
+      <!-- RS PANDEGA -->
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Resort hospital">🌴</div>
+          <span class="project-tasks">177 tasks</span>
+        </div>
+        <h3 class="project-name">SIMRS RSUD Pandega Pangandaran</h3>
+        <div class="project-location">Pangandaran · Jawa Barat</div>
+        <p class="project-desc">
+          Regional public hospital system with SatuSehat integration and custom pharmacy labeling.
+        </p>
+        <ul class="project-features">
+          <li>Bridging LIS via file sharing — TXT-based order exchange with PDF result return</li>
+          <li>Mapping Kode KFA — drug code mapping for SatuSehat data submission</li>
+          <li>Print Etiket Farmasi — FPDF-based thermal printer label printing</li>
+          <li>Fitur ceklis verifikasi SOAP — batch SOAP verification for doctors in one click</li>
+        </ul>
+      </article>
 
+      <!-- RS PMI BOGOR -->
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Red Cross">🔴</div>
+          <span class="project-tasks">103 tasks</span>
+        </div>
+        <h3 class="project-name">SIMRS RS PMI Bogor</h3>
+        <div class="project-location">Bogor · Jawa Barat</div>
+        <p class="project-desc">
+          Feature expansion and reporting module development for an established hospital system.
+        </p>
+        <ul class="project-features">
+          <li>Laporan Sensus Harian IGD — Emergency department daily census report</li>
+          <li>Laporan Capaian Kegiatan — 10-category service summary by payer type</li>
+          <li>Formulir SGA & Pengkajian Gizi Geriatri — complex nutritional assessment forms</li>
+          <li>Notifikasi Order Bank Darah — real-time blood bank order alerts</li>
+        </ul>
+      </article>
+
+      <!-- PT PMN GROUP -->
+      <article class="project-card wide">
+        <div>
+          <div class="project-top">
+            <div class="project-icon" role="img" aria-label="Park hospital">🌳</div>
+            <span class="project-tasks">186+ tasks</span>
+          </div>
+          <h3 class="project-name">SIMRS RS PT PMN Group</h3>
+          <div class="project-location">Sumatera Utara (Pabatu, Balimbingan, Laras)</div>
+          <p class="project-desc">
+            Multi-hospital group deployment — 3 hospitals sharing a unified codebase with custom adjustments per site.
+          </p>
+        </div>
+        <ul class="project-features">
+          <li>Mapping Dokter JKN — direct BPJS Kesehatan API integration for doctor-JKN mapping</li>
+          <li>Laporan BOR Harian Rawat Inap — daily bed occupancy rate report</li>
+          <li>SEP BPJS penyesuaian tujuan kunjungan — based on BPJS trust mark API spec</li>
+          <li>Print Setoran Kasir — cashier settlement detail with patient list printout</li>
+        </ul>
+      </article>
+
+    </div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- SKILLS -->
 <section id="skills">
-  <div class="section-header">
-    <span class="section-num">02</span>
-    <h2 class="section-title">Technical Skills</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="skills-grid">
-    <div class="skill-group">
-      <div class="skill-group-title">Backend</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
-        <div class="skill-item"><span>Laravel</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>REST API Dev</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
-      </div>
+  <div class="container">
+    <div class="section-head">
+      <h2>Technical skills.</h2>
+      <p>From database queries to national health platform integrations.</p>
     </div>
 
-    <div class="skill-group">
-      <div class="skill-group-title">Database</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>Complex Queries</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Report Queries</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3 class="skill-group-title">Backend</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar" role="progressbar" aria-label="PHP (Native)" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
+          <div class="skill-item"><span>Laravel</span><div class="skill-bar" role="progressbar" aria-label="Laravel" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+          <div class="skill-item"><span>REST API Dev</span><div class="skill-bar" role="progressbar" aria-label="REST API Dev" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+          <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar" role="progressbar" aria-label="Python (scripting)" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group">
-      <div class="skill-group-title">Frontend</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-        <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Socket.io</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Database</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar" role="progressbar" aria-label="PostgreSQL" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
+          <div class="skill-item"><span>Complex Queries</span><div class="skill-bar" role="progressbar" aria-label="Complex Queries" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+          <div class="skill-item"><span>Report Queries</span><div class="skill-bar" role="progressbar" aria-label="Report Queries" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group">
-      <div class="skill-group-title">Healthcare IT</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar" role="progressbar" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
-        <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Frontend</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar" role="progressbar" aria-label="HTML / CSS" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
+          <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar" role="progressbar" aria-label="JavaScript / jQuery" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
+          <div class="skill-item"><span>Socket.io</span><div class="skill-bar" role="progressbar" aria-label="Socket.io" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+          <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar" role="progressbar" aria-label="Print / PDF (FPDF)" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group">
-      <div class="skill-group-title">Infrastructure</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-        <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-        <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Healthcare IT</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar" role="progressbar" aria-label="BPJS Kesehatan API" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+          <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar" role="progressbar" aria-label="SatuSehat Integration" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
+          <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar" role="progressbar" aria-label="LIS Bridging" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+          <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar" role="progressbar" aria-label="EMR / SOAP Workflows" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+        </div>
       </div>
-    </div>
 
-    <div class="skill-group">
-      <div class="skill-group-title">Domain Knowledge</div>
-      <div class="skill-items">
-        <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
-        <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
+      <div class="skill-group">
+        <h3 class="skill-group-title">Infrastructure</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar" role="progressbar" aria-label="Ubuntu Server" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
+          <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar" role="progressbar" aria-label="Git / Version Control" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
+          <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar" role="progressbar" aria-label="Cron Jobs" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h3 class="skill-group-title">Domain knowledge</h3>
+        <div class="skill-items">
+          <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar" role="progressbar" aria-label="Hospital Business Flow" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
+          <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar" role="progressbar" aria-label="Clinical Documentation" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
+          <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar" role="progressbar" aria-label="Pharmacy & Warehouse" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
+          <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar" role="progressbar" aria-label="Medical Reporting" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- ABOUT / UPWORK -->
 <section id="about">
-  <div class="section-header">
-    <span class="section-num">03</span>
-    <h2 class="section-title">Profile</h2>
-    <div class="section-line"></div>
-  </div>
-
-  <div class="about-grid">
-    <div class="about-text">
-      <p>
-        I'm a fullstack developer with 3.5 years of focused experience in web-based Hospital
-        Information Systems (SIMRS). My work spans the entire hospital business flow — from
-        patient registration, clinical documentation (SOAP, EMR), pharmacy and drug dispensing,
-        warehouse and supply chain, to billing and accounting.
-      </p>
-      <p>
-        I've worked across 8+ hospital deployments, completing 1,300+ individual tasks ranging
-        from building complex reporting modules and real-time queue systems to integrating with
-        national health platforms like BPJS Kesehatan and SatuSehat.
-      </p>
-      <p>
-        My primary stack is PHP (Laravel & native), PostgreSQL, and vanilla JavaScript with
-        Socket.io for real-time features. I'm comfortable working on legacy codebases, extending
-        existing systems, or building new modules from scratch.
-      </p>
-      <p style="color: var(--text-dim); font-size: 0.78rem; margin-top: 2rem;">
-        📍 Bandung, Indonesia &nbsp;·&nbsp; Available for remote work worldwide
-      </p>
+  <div class="container">
+    <div class="section-head">
+      <h2>Profile.</h2>
     </div>
 
-    <div class="upwork-card">
-      <div class="upwork-headline">PHP Laravel Developer<br>Hospital Information Systems · REST API · PostgreSQL</div>
-      <p class="upwork-bio">
-        With 3.5 years of hands-on experience in healthcare information system development,
-        I specialize in building and maintaining full-cycle hospital management solutions —
-        from patient registration and clinical EMR workflows to pharmacy, warehouse, and
-        accounting modules. Whether you need a robust web-based system, a well-structured API,
-        or an extension to an existing healthcare platform, I bring both the technical skill
-        and domain knowledge to deliver reliable, scalable solutions.
-      </p>
-      <div class="upwork-rate">
-        <span class="rate-num">$10–18</span>
-        <span class="rate-label">/ hour (starting rate)</span>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a fullstack developer with 3.5 years of focused experience in web-based Hospital
+          Information Systems (SIMRS). My work spans the entire hospital business flow — from
+          patient registration, clinical documentation (SOAP, EMR), pharmacy and drug dispensing,
+          warehouse and supply chain, to billing and accounting.
+        </p>
+        <p>
+          I've worked across 8+ hospital deployments, completing 1,300+ individual tasks ranging
+          from building complex reporting modules and real-time queue systems to integrating with
+          national health platforms like BPJS Kesehatan and SatuSehat.
+        </p>
+        <p>
+          My primary stack is PHP (Laravel & native), PostgreSQL, and vanilla JavaScript with
+          Socket.io for real-time features. I'm comfortable working on legacy codebases, extending
+          existing systems, or building new modules from scratch.
+        </p>
+        <span class="about-location">Bandung, Indonesia · Available for remote work worldwide</span>
       </div>
-      <div class="upwork-tags">
-        <span class="upwork-tag">PHP</span>
-        <span class="upwork-tag">Laravel</span>
-        <span class="upwork-tag">PostgreSQL</span>
-        <span class="upwork-tag">REST API</span>
-        <span class="upwork-tag">Healthcare IT</span>
-        <span class="upwork-tag">Socket.io</span>
-        <span class="upwork-tag">SatuSehat</span>
-        <span class="upwork-tag">BPJS API</span>
-        <span class="upwork-tag">Web Development</span>
-      </div>
+
+      <aside class="upwork-card" aria-label="Upwork profile">
+        <div class="upwork-top">
+          <h3>Upwork</h3>
+          <span class="badge-accent">Open to work</span>
+        </div>
+        <p class="upwork-headline">PHP Laravel Developer — Hospital Information Systems · REST API · PostgreSQL</p>
+        <p class="upwork-bio">
+          With 3.5 years of hands-on experience in healthcare information system development,
+          I specialize in building and maintaining full-cycle hospital management solutions —
+          from patient registration and clinical EMR workflows to pharmacy, warehouse, and
+          accounting modules. Whether you need a robust web-based system, a well-structured API,
+          or an extension to an existing healthcare platform, I bring both the technical skill
+          and domain knowledge to deliver reliable, scalable solutions.
+        </p>
+        <div class="upwork-rate">
+          <span class="rate-num">$10–18</span>
+          <span class="rate-label">/ hour, starting rate</span>
+        </div>
+        <div class="upwork-tags">
+          <span class="chip">PHP</span>
+          <span class="chip">Laravel</span>
+          <span class="chip">PostgreSQL</span>
+          <span class="chip">REST API</span>
+          <span class="chip">Healthcare IT</span>
+          <span class="chip">Socket.io</span>
+          <span class="chip">SatuSehat</span>
+          <span class="chip">BPJS API</span>
+          <span class="chip">Web Development</span>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1011,28 +962,33 @@
 </main>
 
 <footer>
-  <span class="footer-name">Muhammad Reza</span>
-  <span class="footer-copy">Fullstack Developer · Healthcare IT · Bandung, Indonesia</span>
+  <div class="container">
+    <div class="footer-name">Muhammad Reza.</div>
+    <p class="footer-tagline">Fullstack developer · Healthcare IT · Bandung, Indonesia</p>
+    <div class="footer-bottom">
+      <ul class="footer-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#about">Profile</a></li>
+      </ul>
+      <span>Available for remote work worldwide</span>
+    </div>
+  </div>
 </footer>
 
 <script>
   // Skill bar animation on scroll
-  const observerOptions = {
-    threshold: 0.2
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const skillBars = entry.target.querySelectorAll('.skill-bar-fill');
-        skillBars.forEach(bar => {
+        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
           bar.style.width = bar.getAttribute('data-percent');
         });
         // Once animated, no need to observe anymore
         observer.unobserve(entry.target);
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.2 });
 
   const skillsSection = document.querySelector('#skills');
   if (skillsSection) {
@@ -1040,11 +996,6 @@
   }
 
   // Scroll-spy for navigation links
-  const spyObserverOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -50% 0px"
-  };
-
   const spyObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -1054,7 +1005,7 @@
         });
       }
     });
-  }, spyObserverOptions);
+  }, { threshold: 0.1, rootMargin: '0px 0px -50% 0px' });
 
   document.querySelectorAll('section[id]').forEach(section => {
     spyObserver.observe(section);
