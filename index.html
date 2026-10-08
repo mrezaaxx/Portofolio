@@ -448,7 +448,7 @@
 
   .side-note a { color: var(--ink); text-underline-offset: 3px; }
 
-  .about-actions { margin-top: var(--s-lg); }
+  .about-actions { display: flex; flex-wrap: wrap; gap: var(--s-xs); margin-top: var(--s-lg); }
 
   /* CONTACT */
   .contact-card {
@@ -671,6 +671,7 @@
   }
 
   .footer-links { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); list-style: none; }
+  .footer-contacts { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); }
   .footer-contact { color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
   .footer-contact:hover { color: var(--on-primary); }
   .footer-links a { text-decoration: none; color: var(--text-faint); transition: color 0.2s; }
@@ -702,8 +703,9 @@
     .skills-grid { grid-template-columns: 1fr; }
     .project-card, .upwork-card, .contact-card { padding: var(--s-lg); }
     .contact-item { grid-template-columns: 1fr auto; row-gap: 0; padding: var(--s-sm) var(--s-lg); }
+    .contact-card { padding: var(--s-lg) var(--s-md); }
     .contact-label { grid-column: 1; }
-    .contact-value { grid-column: 1; }
+    .contact-value { grid-column: 1; font-size: 15px; }
     .contact-arrow { grid-column: 2; grid-row: 1 / span 2; }
     .featured .project-name { font-size: 24px; line-height: 1.25; }
     .hero-lead, .section-head p, .featured .project-desc, .about-text p:first-child { font-size: 18px; }
@@ -1117,6 +1119,7 @@
         </p>
         <span class="about-location">Bandung, Indonesia · Available for remote work worldwide</span>
         <div class="about-actions">
+          <a class="btn btn-soft btn-sm" href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">LinkedIn ↗</a>
           <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
       </div>
@@ -1164,6 +1167,16 @@
         <p>Open to freelance projects and remote roles, so reach out anytime.</p>
       </div>
       <div class="contact-list">
+        <a class="contact-item" href="mailto:rezamuhammad890@gmail.com">
+          <span class="contact-label">Email</span>
+          <span class="contact-value">rezamuhammad890@gmail.com</span>
+          <span class="contact-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">
+          <span class="contact-label">LinkedIn</span>
+          <span class="contact-value">linkedin.com/in/mrezaaxx</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
         <a class="contact-item" href="https://wa.me/6289654304740" target="_blank" rel="noopener">
           <span class="contact-label">WhatsApp</span>
           <span class="contact-value">+62 896-5430-4740</span>
@@ -1196,9 +1209,13 @@
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">Profile</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
-      <a class="footer-contact" href="tel:+6289654304740">+62 896-5430-4740</a>
+      <div class="footer-contacts">
+        <a class="footer-contact" href="mailto:rezamuhammad890@gmail.com">rezamuhammad890@gmail.com</a>
+        <a class="footer-contact" href="tel:+6289654304740">+62 896-5430-4740</a>
+      </div>
     </div>
   </div>
 </footer>
