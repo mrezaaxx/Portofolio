@@ -421,6 +421,35 @@
     flex-shrink: 0;
   }
 
+  .project-card { display: flex; flex-direction: column; }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-xs);
+    margin-top: auto;
+    padding-top: var(--s-lg);
+  }
+
+  .project-features code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px;
+    background: var(--canvas-soft);
+    border-radius: 6px;
+    padding: 1px 6px;
+  }
+
+  .side-note {
+    margin-top: var(--s-lg);
+    font-size: 14px;
+    line-height: 1.43;
+    color: var(--text-muted);
+  }
+
+  .side-note a { color: var(--ink); text-underline-offset: 3px; }
+
+  .about-actions { margin-top: var(--s-lg); }
+
   /* SKILLS */
   .skills-grid {
     display: grid;
@@ -609,7 +638,7 @@
     nav { max-width: 480px; }
     .projects-grid { grid-template-columns: 1fr; }
     .project-card.featured,
-    .project-card.wide { grid-column: span 1; grid-template-columns: 1fr; }
+    .project-card.wide { grid-column: span 1; grid-template-columns: 1fr; row-gap: 0; }
     .featured .project-features,
     .wide .project-features { padding-top: var(--s-lg); border-top: 1px solid var(--hairline); }
     .about-grid { grid-template-columns: 1fr; }
@@ -639,6 +668,7 @@
     <a class="nav-logo" href="#top"><span class="nav-logo-mark" aria-hidden="true">MR</span>Muhammad Reza</a>
     <ul class="nav-links">
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#side-projects">Builds</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#about">Profile</a></li>
     </ul>
@@ -655,8 +685,8 @@
     <h1>Muhammad Reza.</h1>
     <p class="hero-lead">
       <strong>Fullstack developer, healthcare IT specialist.</strong>
-      3.5+ years building web-based Hospital Information Systems (SIMRS) for real clinical
-      environments across Indonesia — patient registration, pharmacy, warehouse,
+      3.5+ years building web-based Hospital Information Systems (SIMRS) for 15+ hospitals
+      and clinics across Indonesia — patient registration, pharmacy, warehouse,
       accounting, and full EMR workflows.
     </p>
     <div class="hero-actions">
@@ -666,8 +696,8 @@
 
     <div class="hero-stats">
       <div class="stat-item">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Hospitals delivered</div>
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Hospitals & clinics delivered</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">1,300+</div>
@@ -689,6 +719,11 @@
       <span class="chip">BPJS Kesehatan</span>
       <span class="chip">Python</span>
       <span class="chip">HTML/CSS/JS</span>
+      <span class="chip">React</span>
+      <span class="chip">Node.js</span>
+      <span class="chip">Tailwind CSS</span>
+      <span class="chip">Supabase</span>
+      <span class="chip">Java</span>
     </div>
   </div>
 </header>
@@ -698,7 +733,7 @@
   <div class="container">
     <div class="section-head">
       <h2>Selected projects.</h2>
-      <p>Hospital systems shipped to production across West Java and North Sumatra.</p>
+      <p>A selection of the 15+ hospital and clinic systems I've shipped to production across Indonesia.</p>
     </div>
 
     <div class="projects-grid">
@@ -827,6 +862,106 @@
   </div>
 </section>
 
+<!-- SIDE PROJECTS -->
+<section id="side-projects">
+  <div class="container">
+    <div class="section-head">
+      <h2>Independent builds.</h2>
+      <p>Side projects and prototypes from my GitHub — modern stacks applied to the problems I know best.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Stethoscope">🩺</div>
+          <span class="project-tasks">Live demo</span>
+        </div>
+        <h3 class="project-name">Clinical Ops</h3>
+        <div class="project-location">React · Laravel API · Node.js · Supabase PostgreSQL</div>
+        <p class="project-desc">
+          Healthcare operations MVP that connects every clinical unit in one realtime data flow.
+        </p>
+        <ul class="project-features">
+          <li>Patient registration with UUID keys and JSONB medical history</li>
+          <li>Realtime queue display — Laravel broadcasts to a Node.js Socket.io relay</li>
+          <li>Polyclinic records with ICD-10 coding and e-prescriptions</li>
+          <li>Pharmacy validation with automatic stock deduction, plus cashier billing</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-primary btn-sm" href="https://clinical-ops-eight.vercel.app" target="_blank" rel="noopener">View live ↗</a>
+          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/Clinical-ops" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
+          <span class="project-tasks">Live demo</span>
+        </div>
+        <h3 class="project-name">SIMRS Laravel prototype</h3>
+        <div class="project-location">Laravel 11 · Blade · Vercel</div>
+        <p class="project-desc">
+          A hospital information system prototype built from scratch in modern Laravel with role-based access.
+        </p>
+        <ul class="project-features">
+          <li>Modules for patients, IGD (emergency), inpatient, and polyclinic appointments</li>
+          <li>Lab and radiology ordering for doctors</li>
+          <li>Master data for departments, doctors, schedules, rooms, and beds</li>
+          <li>Role middleware for admin, doctor, nurse, and staff</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-primary btn-sm" href="https://simrs-laravel.vercel.app" target="_blank" rel="noopener">View live ↗</a>
+          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/hypercare" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Building blocks">🧩</div>
+          <span class="project-tasks">Private</span>
+        </div>
+        <h3 class="project-name">Lini backend</h3>
+        <div class="project-location">Laravel · REST API · SaaS</div>
+        <p class="project-desc">
+          Modular backend service for operational SaaS applications.
+        </p>
+        <ul class="project-features">
+          <li>Authentication, role-based access control, and workspace management</li>
+          <li>Pluggable business workflow modules — garment production, laundry, and logistics</li>
+        </ul>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Link">🔗</div>
+          <span class="project-tasks">Open source</span>
+        </div>
+        <h3 class="project-name">JSON-driven binding engine</h3>
+        <div class="project-location">Vanilla JavaScript · zero dependencies</div>
+        <p class="project-desc">
+          A lightweight library that renders pages from JSON using HTML data attributes — no framework needed.
+        </p>
+        <ul class="project-features">
+          <li>Text, attribute, tel/mailto, and meta bindings via <code>data-bind-*</code></li>
+          <li>List rendering from arrays with <code>&lt;template&gt;</code> elements</li>
+          <li>Conditional visibility and graceful fallback to demo data</li>
+        </ul>
+        <div class="project-links">
+          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/json-driven-binding-engine" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="side-note">
+      Also on GitHub: Java coursework on OOP, recursion, and data-structure analysis, and
+      <a href="https://github.com/mrezaaxx/laundryeza" target="_blank" rel="noopener">Laundryeza</a>,
+      a Laravel laundry management app from 2022.
+    </p>
+  </div>
+</section>
+
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
@@ -913,9 +1048,11 @@
           warehouse and supply chain, to billing and accounting.
         </p>
         <p>
-          I've worked across 8+ hospital deployments, completing 1,300+ individual tasks ranging
-          from building complex reporting modules and real-time queue systems to integrating with
-          national health platforms like BPJS Kesehatan and SatuSehat.
+          At Terakorp I work on the Teramedik SIMRS platform — both the native-PHP V5 line and the
+          Laravel-based V6 — across 15+ hospital and clinic deployments, plus self-service
+          patient kiosks. I've completed 1,300+ individual tasks ranging from complex reporting
+          modules and real-time queue systems to integrations with national health platforms
+          like BPJS Kesehatan and SatuSehat.
         </p>
         <p>
           My primary stack is PHP (Laravel & native), PostgreSQL, and vanilla JavaScript with
@@ -923,6 +1060,9 @@
           existing systems, or building new modules from scratch.
         </p>
         <span class="about-location">Bandung, Indonesia · Available for remote work worldwide</span>
+        <div class="about-actions">
+          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
       </div>
 
       <aside class="upwork-card" aria-label="Upwork profile">
@@ -970,6 +1110,7 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">Profile</a></li>
+        <li><a href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
       <span>Available for remote work worldwide</span>
     </div>
