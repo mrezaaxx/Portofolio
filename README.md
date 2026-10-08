@@ -1,60 +1,40 @@
 # Muhammad Reza — Fullstack Developer Portfolio
 
-A professional portfolio showcasing 4+ years of experience (since September 2022) in building web-based Hospital Information Systems (SIMRS) for clinical environments across Indonesia.
+Single-page portfolio for a fullstack developer specializing in hospital information systems (SIMRS) in Indonesia: 4+ years of experience (since September 2022) and software used in 15+ hospitals and clinics.
 
-## 🚀 Overview
+Live: https://mrezaaxx.github.io/Portofolio/
 
-I am a Fullstack Developer specializing in Healthcare IT. My expertise spans the entire hospital business workflow, including patient registration, Electronic Medical Records (EMR), pharmacy, warehouse, and billing. I have delivered solutions for 15+ hospitals and clinics, completing more than 1,300 technical tasks.
+## Sections
 
-- **📍 Location:** Bandung, Indonesia
-- **💼 Status:** Available for Freelance / Remote Work
+1. **Hero:** name, role, one-line value statement, contact CTA, key numbers
+2. **About:** location, domain, career direction
+3. **Experience:** timeline, plus education (BINUS Online)
+4. **Selected projects:** problem / role / result / stack cards. Client names are anonymized.
+5. **Skills:** technology grouped by use
+6. **Contact:** email, LinkedIn, GitHub, WhatsApp
+7. **Footer:** CTA, links, copyright
 
-## 🛠 Tech Stack
+## Features
 
-### Backend & Database
-- **Languages:** PHP (Native & Laravel), Python (Scripting)
-- **Database:** PostgreSQL (Complex Queries & Reporting)
-- **APIs:** REST API Development
+- English by default, with a Bahasa Indonesia toggle (choice remembered per browser)
+- Responsive layout (mobile, tablet, desktop)
+- SEO: meta description, Open Graph, canonical URL, JSON-LD `Person` schema
+- Accessibility: skip link, keyboard focus styles, semantic landmarks, reduced-motion support
+- Light scroll-reveal animation
 
-### Frontend & Real-time
-- **UI/UX:** HTML5, CSS3, JavaScript (Vanilla & jQuery)
-- **Real-time:** Socket.io (Queue displays, notifications)
-- **Reporting:** FPDF (Thermal labels, PDF reports)
+## Tech
 
-### Healthcare IT Specialist
-- **Integrations:** BPJS Kesehatan API (VClaim, Antrean), SatuSehat (KFA Mapping, Patient Data)
-- **Clinical:** EMR/SOAP Workflows, LIS (Laboratory Information System) Bridging
-- **Workflows:** Pharmacy, Warehouse, & Accounting modules
+Plain HTML, CSS, and vanilla JavaScript. No build step. Hosted on GitHub Pages.
+Visual design follows `DESIGN-mobbin.md` (monochrome, pill controls, Inter).
 
-### Infrastructure
-- **Environment:** Ubuntu Server, Cron Jobs
-- **Tools:** Git / Version Control
+## Editing content
 
-## 📁 Key Projects
+All content lives in `index.html`. English text is in the markup. Indonesian strings are in the `ID` object in the script at the bottom of the file, keyed by each element's `data-i18n` attribute.
 
-### SIMRS RS Oetomo Bojongsoang
-- **Scope:** Full-scope clinical and administrative flows.
-- **Highlights:** Bed movement tracking, Socket.io real-time queue display, Python-based PDF consolidation.
+## Privacy
 
-### SIMRS RS Hamori Subang
-- **Scope:** Multi-module system with advanced integrations.
-- **Highlights:** Bidirectional LIS bridging, nurse queue with voice calling, revenue estimation dashboards.
+Hospital and client names, patient data, and internal code are not shown. Projects are described by type and region only.
 
-### SIMRS RSGM Maranatha
-- **Scope:** Specialized dental hospital system.
-- **Highlights:** Intra-oral examination charting (tooth diagrams), auto-populated resume medis, medical record tracer.
+## License
 
-### SIMRS RSUD Pandega Pangandaran
-- **Scope:** Regional public hospital system.
-- **Highlights:** SatuSehat KFA mapping, thermal printer etiket labels, batch SOAP verification.
-
-## 🖥 How to View
-
-This portfolio is a static single-page application.
-
-1. Clone this repository.
-2. Open `index.html` in any modern web browser.
-
-## 📄 License
-
-This project is personal portfolio content. All rights reserved.
+Personal portfolio content. All rights reserved.
