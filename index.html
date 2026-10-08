@@ -3,7 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Reza — Fullstack Developer Portfolio</title>
+<title>Muhammad Reza — Fullstack Developer, Healthcare IT</title>
+<meta name="description" content="Fullstack developer in Bandung, Indonesia. Since 2022 I've built hospital software used in 15+ hospitals and clinics — patient queues, clinical records, and national health insurance integrations.">
+<link rel="canonical" href="https://mrezaaxx.github.io/Portofolio/">
+<meta name="author" content="Muhammad Reza">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='19' fill='%23141414'/%3E%3Ctext x='32' y='42' font-family='Arial,sans-serif' font-size='26' font-weight='700' fill='%23fff' text-anchor='middle'%3EMR%3C/text%3E%3C/svg%3E">
+
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Muhammad Reza — Fullstack Developer, Healthcare IT">
+<meta property="og:description" content="Hospital software used in 15+ hospitals and clinics across Indonesia since 2022. PHP, Laravel, PostgreSQL, realtime systems, and BPJS / SatuSehat integrations.">
+<meta property="og:url" content="https://mrezaaxx.github.io/Portofolio/">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="id_ID">
+<meta property="profile:first_name" content="Muhammad">
+<meta property="profile:last_name" content="Reza">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Muhammad Reza — Fullstack Developer, Healthcare IT">
+<meta name="twitter:description" content="Hospital software used in 15+ hospitals and clinics across Indonesia since 2022.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Muhammad Reza",
+  "jobTitle": "Fullstack Developer",
+  "description": "Fullstack developer specializing in hospital information systems (SIMRS) in Indonesia.",
+  "url": "https://mrezaaxx.github.io/Portofolio/",
+  "email": "mailto:rezamuhammad890@gmail.com",
+  "telephone": "+6289654304740",
+  "address": { "@type": "PostalAddress", "addressLocality": "Bandung", "addressCountry": "ID" },
+  "worksFor": { "@type": "Organization", "name": "Terakorp" },
+  "knowsAbout": ["PHP", "Laravel", "PostgreSQL", "JavaScript", "Socket.io", "React", "Hospital information systems", "BPJS Kesehatan API", "SatuSehat"],
+  "sameAs": ["https://github.com/mrezaaxx", "https://www.linkedin.com/in/mrezaaxx"]
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&display=swap" rel="stylesheet">
@@ -14,7 +48,7 @@
     --on-primary: #ffffff;
     --ink: #141414;
     --ink-soft: #262626;
-    --text-muted: #707070;
+    --text-muted: #6b6b6b; /* DESIGN-mobbin #707070, darkened for WCAG AA on canvas-soft */
     --text-faint: #adadad;
     --canvas: #ffffff;
     --canvas-soft: #f3f3f3;
@@ -118,6 +152,9 @@
   .btn-soft { background: var(--canvas-soft); color: var(--ink); }
   .btn-soft:hover { background: var(--hairline); }
 
+  .btn-inverse { background: var(--on-primary); color: var(--ink); }
+  .btn-inverse:hover { background: var(--hairline); }
+
   .btn-sm { height: 36px; font-size: 14px; }
 
   /* NAV — floating pill */
@@ -137,9 +174,9 @@
     pointer-events: auto;
     display: flex;
     align-items: center;
-    gap: var(--s-xl);
+    gap: var(--s-lg);
     width: 100%;
-    max-width: 720px;
+    max-width: 800px;
     padding: var(--s-xs) var(--s-xs) var(--s-xs) var(--s-lg);
     background: rgba(243, 243, 243, 0.88);
     backdrop-filter: blur(16px);
@@ -155,6 +192,7 @@
     font-size: 16px;
     text-decoration: none;
     margin-right: auto;
+    white-space: nowrap;
   }
 
   .nav-logo-mark {
@@ -186,9 +224,20 @@
   .nav-links a:hover,
   .nav-links a.active { color: var(--ink); }
 
+  .nav-actions { display: flex; gap: var(--s-xs); }
+
+  .lang-toggle {
+    min-width: 44px;
+    padding: 0 var(--s-sm);
+    background: var(--canvas);
+    font-size: 13px;
+  }
+
+  .lang-toggle:hover { background: var(--hairline); }
+
   /* HERO */
   .hero {
-    padding: calc(var(--s-section-lg) + var(--s-xxl)) 0 var(--s-section);
+    padding: calc(var(--s-section-lg) + var(--s-xl)) 0 var(--s-section);
     text-align: center;
   }
 
@@ -203,12 +252,8 @@
     font-size: 12px;
     font-weight: var(--w-title);
     line-height: 1.33;
-    text-decoration: none;
-    margin-bottom: var(--s-xl);
-    transition: background-color 0.2s;
+    margin-bottom: var(--s-lg);
   }
-
-  .hero-badge:hover { background: var(--hairline); }
 
   .hero-badge-dot {
     width: 8px;
@@ -221,26 +266,30 @@
     font-size: clamp(48px, 9vw, 80px);
     font-weight: var(--w-display);
     line-height: 1;
+    margin-bottom: var(--s-sm);
+  }
+
+  .hero-role {
+    font-size: 20px;
+    font-weight: var(--w-title);
+    line-height: 1.3;
     margin-bottom: var(--s-lg);
   }
 
-  .hero-lead {
+  .hero-value {
     font-size: 20px;
     font-weight: var(--w-light);
     line-height: 1.38;
-    color: var(--ink);
     max-width: 640px;
     margin: 0 auto var(--s-xl);
   }
-
-  .hero-lead strong { font-weight: var(--w-title); }
 
   .hero-actions {
     display: flex;
     justify-content: center;
     gap: var(--s-sm);
     flex-wrap: wrap;
-    margin-bottom: var(--s-section);
+    margin-bottom: var(--s-xxl);
   }
 
   .hero-stats {
@@ -248,13 +297,13 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--s-md);
     max-width: 840px;
-    margin: 0 auto var(--s-xxl);
+    margin: 0 auto var(--s-lg);
   }
 
   .stat-item {
     background: var(--canvas-soft);
     border-radius: var(--r-md);
-    padding: var(--s-xl) var(--s-lg);
+    padding: var(--s-lg);
   }
 
   .stat-num {
@@ -270,14 +319,13 @@
     color: var(--text-muted);
   }
 
-  .stack-row {
+  .chip-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: var(--s-xs);
-    max-width: 840px;
-    margin: 0 auto;
   }
+
+  .hero .chip-row { justify-content: center; }
 
   .chip {
     display: inline-flex;
@@ -292,8 +340,10 @@
     color: var(--ink);
   }
 
+  .chip-sm { height: 28px; font-size: 13px; padding: 0 10px; }
+
   /* SECTIONS */
-  section { padding: var(--s-section) 0; scroll-margin-top: var(--s-section); }
+  section { padding: var(--s-section) 0; scroll-margin-top: var(--s-xl); }
 
   .section-head { margin-bottom: var(--s-xxl); max-width: 720px; }
 
@@ -310,6 +360,96 @@
     color: var(--text-muted);
   }
 
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: var(--s-xxl);
+    align-items: start;
+  }
+
+  .about-grid .section-head { margin-bottom: 0; }
+
+  .about-text {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    line-height: 1.5;
+  }
+
+  .about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s-xs);
+    margin-top: var(--s-lg);
+  }
+
+  /* EXPERIENCE */
+  .timeline { list-style: none; display: flex; flex-direction: column; gap: var(--s-md); }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--s-lg);
+    background: var(--canvas);
+    border: 1px solid var(--hairline-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xl);
+  }
+
+  .timeline-period {
+    font-size: 14px;
+    font-weight: var(--w-title);
+    color: var(--text-muted);
+    padding-top: 6px;
+  }
+
+  .timeline-body h3 {
+    font-size: 24px;
+    font-weight: var(--w-display);
+    line-height: 1.25;
+  }
+
+  .timeline-org {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: var(--s-md);
+  }
+
+  .bullet-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-sm);
+  }
+
+  .bullet-list li {
+    display: flex;
+    gap: var(--s-sm);
+    font-size: 15px;
+    line-height: 1.43;
+  }
+
+  .bullet-list li::before {
+    content: '→';
+    color: var(--text-faint);
+    flex-shrink: 0;
+  }
+
+  .edu-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s-md);
+    flex-wrap: wrap;
+    margin-top: var(--s-md);
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-lg) var(--s-xl);
+  }
+
+  .edu-label { font-size: 14px; font-weight: var(--w-title); color: var(--text-muted); }
+  .edu-line { font-size: 20px; font-weight: var(--w-title); line-height: 1.3; }
+
   /* PROJECTS */
   .projects-grid {
     display: grid;
@@ -318,6 +458,8 @@
   }
 
   .project-card {
+    display: flex;
+    flex-direction: column;
     background: var(--canvas);
     border: 1px solid var(--hairline-soft);
     border-radius: var(--r-md);
@@ -327,18 +469,7 @@
 
   .project-card:hover { border-color: var(--hairline); }
 
-  .project-card.featured {
-    background: var(--canvas-soft);
-    border-color: transparent;
-  }
-
-  .project-card.featured,
-  .project-card.wide {
-    grid-column: span 2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--s-xl) var(--s-xxl);
-  }
+  .project-card.featured { background: var(--canvas-soft); border-color: transparent; }
 
   .project-top {
     display: flex;
@@ -359,7 +490,7 @@
 
   .featured .project-icon { background: var(--canvas); }
 
-  .project-tasks {
+  .project-tag {
     display: inline-flex;
     align-items: center;
     height: 28px;
@@ -371,7 +502,7 @@
     line-height: 1.33;
   }
 
-  .featured .project-tasks { background: var(--canvas); }
+  .featured .project-tag { background: var(--canvas); }
 
   .project-name {
     font-size: 24px;
@@ -380,75 +511,101 @@
     margin-bottom: var(--s-xxs);
   }
 
-  .featured .project-name { font-size: 32px; line-height: 1.13; }
+  .project-context {
+    font-size: 14px;
+    line-height: 1.43;
+    color: var(--text-muted);
+    margin-bottom: var(--s-lg);
+  }
 
-  .project-location {
+  .project-facts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+    padding-top: var(--s-lg);
+    border-top: 1px solid var(--hairline);
+    margin-bottom: var(--s-lg);
+  }
+
+  .project-facts dt {
+    font-size: 12px;
+    font-weight: var(--w-title);
+    line-height: 1.33;
+    color: var(--text-muted);
+    margin-bottom: var(--s-xxs);
+  }
+
+  .project-facts dd { font-size: 15px; line-height: 1.43; }
+
+  .project-bottom {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-md);
+  }
+
+  .project-links { display: flex; flex-wrap: wrap; gap: var(--s-xs); }
+
+  .more-work {
+    margin-top: var(--s-xxl);
+  }
+
+  .more-work h3 {
+    font-size: 20px;
+    font-weight: var(--w-title);
+    line-height: 1.3;
+    margin-bottom: var(--s-md);
+  }
+
+  .more-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+  }
+
+  .more-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xxs);
+    height: 100%;
+    background: var(--canvas-soft);
+    border-radius: var(--r-sm);
+    padding: var(--s-md) var(--s-lg);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  a.more-item:hover { background: var(--hairline); }
+
+  .more-name { font-weight: var(--w-title); }
+  .more-desc { font-size: 14px; line-height: 1.43; color: var(--text-muted); }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s-md);
+  }
+
+  .skill-group {
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-lg);
+  }
+
+  .skill-group h3 {
+    font-size: 20px;
+    font-weight: var(--w-title);
+    line-height: 1.3;
+  }
+
+  .skill-group p {
     font-size: 14px;
     line-height: 1.43;
     color: var(--text-muted);
     margin-bottom: var(--s-md);
   }
-
-  .project-desc {
-    color: var(--text-muted);
-    margin-bottom: var(--s-lg);
-  }
-
-  .featured .project-desc { font-size: 20px; font-weight: var(--w-light); color: var(--ink); }
-
-  .project-features {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-sm);
-    padding-top: var(--s-lg);
-    border-top: 1px solid var(--hairline);
-  }
-
-  .featured .project-features,
-  .wide .project-features { border-top: 0; padding-top: 0; align-self: center; }
-
-  .project-features li {
-    display: flex;
-    gap: var(--s-sm);
-    font-size: 14px;
-    line-height: 1.43;
-  }
-
-  .project-features li::before {
-    content: '→';
-    color: var(--text-faint);
-    flex-shrink: 0;
-  }
-
-  .project-card { display: flex; flex-direction: column; }
-
-  .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--s-xs);
-    margin-top: auto;
-    padding-top: var(--s-lg);
-  }
-
-  .project-features code {
-    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    font-size: 13px;
-    background: var(--canvas-soft);
-    border-radius: 6px;
-    padding: 1px 6px;
-  }
-
-  .side-note {
-    margin-top: var(--s-lg);
-    font-size: 14px;
-    line-height: 1.43;
-    color: var(--text-muted);
-  }
-
-  .side-note a { color: var(--ink); text-underline-offset: 3px; }
-
-  .about-actions { display: flex; flex-wrap: wrap; gap: var(--s-xs); margin-top: var(--s-lg); }
 
   /* CONTACT */
   .contact-card {
@@ -461,18 +618,7 @@
     padding: var(--s-xxl);
   }
 
-  .contact-head h2 {
-    font-size: clamp(32px, 5vw, 44px);
-    font-weight: var(--w-display);
-    line-height: 1.13;
-    margin-bottom: var(--s-sm);
-  }
-
-  .contact-head p {
-    font-size: 20px;
-    font-weight: var(--w-light);
-    color: var(--text-muted);
-  }
+  .contact-card .section-head { margin-bottom: 0; }
 
   .contact-list {
     display: flex;
@@ -499,143 +645,6 @@
   .contact-value { font-weight: var(--w-title); overflow-wrap: anywhere; }
   .contact-arrow { color: var(--text-muted); }
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--s-md);
-  }
-
-  .skill-group {
-    background: var(--canvas-soft);
-    border-radius: var(--r-md);
-    padding: var(--s-lg);
-  }
-
-  .skill-group-title {
-    font-size: 20px;
-    font-weight: var(--w-title);
-    line-height: 1.3;
-    margin-bottom: var(--s-lg);
-  }
-
-  .skill-items {
-    display: flex;
-    flex-direction: column;
-    gap: var(--s-md);
-  }
-
-  .skill-item {
-    display: grid;
-    grid-template-columns: 1fr 96px;
-    align-items: center;
-    gap: var(--s-md);
-    font-size: 14px;
-    line-height: 1.43;
-  }
-
-  .skill-bar {
-    height: 6px;
-    background: var(--canvas);
-    border-radius: var(--r-full);
-    overflow: hidden;
-  }
-
-  .skill-bar-fill {
-    height: 100%;
-    width: 0;
-    background: var(--ink);
-    border-radius: var(--r-full);
-    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  /* PROFILE */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: var(--s-xxl);
-    align-items: start;
-  }
-
-  .about-text p { margin-bottom: var(--s-md); color: var(--ink); }
-  .about-text p:first-child { font-size: 20px; font-weight: var(--w-light); }
-
-  .about-location {
-    display: inline-flex;
-    margin-top: var(--s-md);
-    font-size: 14px;
-    color: var(--text-muted);
-  }
-
-  .upwork-card {
-    background: var(--canvas-soft);
-    border-radius: var(--r-md);
-    padding: var(--s-xl);
-  }
-
-  .upwork-top {
-    display: flex;
-    align-items: center;
-    gap: var(--s-xs);
-    margin-bottom: var(--s-md);
-  }
-
-  .upwork-top h3 {
-    font-size: 24px;
-    font-weight: var(--w-display);
-    line-height: 1.25;
-  }
-
-  .badge-accent {
-    display: inline-flex;
-    align-items: center;
-    height: 24px;
-    padding: 0 10px;
-    border-radius: var(--r-full);
-    background: var(--accent);
-    color: var(--on-primary);
-    font-size: 12px;
-    font-weight: var(--w-title);
-    line-height: 1.33;
-  }
-
-  .upwork-headline {
-    font-size: 16px;
-    font-weight: var(--w-title);
-    margin-bottom: var(--s-sm);
-  }
-
-  .upwork-bio {
-    font-size: 14px;
-    line-height: 1.43;
-    color: var(--text-muted);
-    margin-bottom: var(--s-lg);
-  }
-
-  .upwork-rate {
-    display: flex;
-    align-items: baseline;
-    gap: var(--s-xs);
-    padding: var(--s-lg) 0;
-    margin-bottom: var(--s-lg);
-    border-top: 1px solid var(--hairline);
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .rate-num {
-    font-size: 44px;
-    font-weight: var(--w-display);
-    line-height: 1;
-  }
-
-  .rate-label { font-size: 14px; color: var(--text-muted); }
-
-  .upwork-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--s-xs);
-  }
-
   /* FOOTER — inverse band */
   footer {
     margin-top: var(--s-section);
@@ -643,6 +652,15 @@
     color: var(--on-primary);
     border-radius: var(--r-md) var(--r-md) 0 0;
     padding: var(--s-section) 0 var(--s-xxl);
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--s-lg);
+    flex-wrap: wrap;
+    margin-bottom: var(--s-xxl);
   }
 
   .footer-name {
@@ -656,7 +674,6 @@
     font-size: 20px;
     font-weight: var(--w-light);
     color: var(--text-faint);
-    margin-bottom: var(--s-xxl);
   }
 
   .footer-bottom {
@@ -671,66 +688,80 @@
   }
 
   .footer-links { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); list-style: none; }
-  .footer-contacts { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); }
-  .footer-contact { color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
-  .footer-contact:hover { color: var(--on-primary); }
   .footer-links a { text-decoration: none; color: var(--text-faint); transition: color 0.2s; }
   .footer-links a:hover { color: var(--on-primary); }
 
   footer :focus-visible { outline-color: var(--on-primary); }
 
+  /* SCROLL REVEAL — only when JS is running */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .js .reveal.is-visible { opacity: 1; transform: none; }
+
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .more-list { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 840px) {
     :root { --gutter: 16px; }
     .nav-links { display: none; }
-    nav { max-width: 480px; }
+    nav { max-width: 520px; }
+    .about-grid { grid-template-columns: 1fr; gap: var(--s-lg); }
+    .timeline-item { grid-template-columns: 1fr; gap: var(--s-xs); }
     .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured,
-    .project-card.wide { grid-column: span 1; grid-template-columns: 1fr; row-gap: 0; }
-    .featured .project-features,
-    .wide .project-features { padding-top: var(--s-lg); border-top: 1px solid var(--hairline); }
-    .about-grid { grid-template-columns: 1fr; }
     .contact-card { grid-template-columns: 1fr; gap: var(--s-xl); }
   }
 
   @media (max-width: 640px) {
+    nav { padding-left: var(--s-md); gap: var(--s-sm); }
+    .nav-logo-text { display: none; }
     .hero { padding-top: calc(var(--s-section) + var(--s-xxl)); }
-    .hero-stats { grid-template-columns: 1fr; }
+    .hero-stats { gap: var(--s-xs); }
+    .stat-item { padding: var(--s-md) var(--s-xs); border-radius: var(--r-sm); }
+    .stat-num { font-size: 30px; }
+    .stat-label { font-size: 12px; line-height: 1.33; }
     .skills-grid { grid-template-columns: 1fr; }
-    .project-card, .upwork-card, .contact-card { padding: var(--s-lg); }
-    .contact-item { grid-template-columns: 1fr auto; row-gap: 0; padding: var(--s-sm) var(--s-lg); }
+    .timeline-item, .project-card { padding: var(--s-lg); }
+    .edu-card { padding: var(--s-lg); }
+    .hero-role, .hero-value, .section-head p, .about-text { font-size: 18px; }
     .contact-card { padding: var(--s-lg) var(--s-md); }
+    .contact-item { grid-template-columns: 1fr auto; row-gap: 0; padding: var(--s-sm) var(--s-lg); }
     .contact-label { grid-column: 1; }
     .contact-value { grid-column: 1; font-size: 15px; }
     .contact-arrow { grid-column: 2; grid-row: 1 / span 2; }
-    .featured .project-name { font-size: 24px; line-height: 1.25; }
-    .hero-lead, .section-head p, .featured .project-desc, .about-text p:first-child { font-size: 18px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
   }
 </style>
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-<a href="#main-content" class="skip-link">Skip to content</a>
+<a href="#main-content" class="skip-link" data-i18n="skip">Skip to content</a>
 
 <div class="nav-wrap">
   <nav aria-label="Primary">
-    <a class="nav-logo" href="#top"><span class="nav-logo-mark" aria-hidden="true">MR</span>Muhammad Reza</a>
+    <a class="nav-logo" href="#top" aria-label="Muhammad Reza"><span class="nav-logo-mark" aria-hidden="true">MR</span><span class="nav-logo-text">Muhammad Reza</span></a>
     <ul class="nav-links">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#side-projects">Builds</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#about">Profile</a></li>
+      <li><a href="#about" data-i18n="nav.about">About</a></li>
+      <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+      <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+      <li><a href="#skills" data-i18n="nav.skills">Skills</a></li>
     </ul>
-    <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
+    <div class="nav-actions">
+      <button type="button" class="btn btn-sm lang-toggle" id="lang-toggle" aria-label="ID — Ganti ke Bahasa Indonesia" lang="id">ID</button>
+      <a class="btn btn-primary btn-sm" href="#contact" data-i18n="cta.contact">Contact me</a>
+    </div>
   </nav>
 </div>
 
@@ -739,421 +770,238 @@
 <!-- HERO -->
 <header class="hero" id="top">
   <div class="container">
-    <a href="#about" class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span>Available for freelance</a>
+    <span class="hero-badge"><span class="hero-badge-dot" aria-hidden="true"></span><span data-i18n="hero.badge">Open to full-time and freelance work</span></span>
     <h1>Muhammad Reza.</h1>
-    <p class="hero-lead">
-      <strong>Fullstack developer, healthcare IT specialist.</strong>
-      4+ years building web-based Hospital Information Systems (SIMRS) for 15+ hospitals
-      and clinics across Indonesia — patient registration, pharmacy, warehouse,
-      accounting, and full EMR workflows.
-    </p>
+    <p class="hero-role" data-i18n="hero.role">Fullstack Developer · Healthcare IT</p>
+    <p class="hero-value" data-i18n="hero.value">I build hospital software used in 15+ hospitals and clinics across Indonesia since 2022 — from patient queues to national health insurance integrations.</p>
     <div class="hero-actions">
-      <a class="btn btn-primary" href="#projects">View projects</a>
-      <a class="btn btn-outline" href="#about">See profile</a>
+      <a class="btn btn-primary" href="#contact" data-i18n="cta.contact">Contact me</a>
+      <a class="btn btn-outline" href="#projects" data-i18n="hero.cta2">View projects</a>
     </div>
 
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">15+</div>
-        <div class="stat-label">Hospitals & clinics delivered</div>
+        <div class="stat-label" data-i18n="stat1">Hospitals & clinics since 2022</div>
       </div>
       <div class="stat-item">
         <div class="stat-num">1,300+</div>
-        <div class="stat-label">Tasks completed</div>
+        <div class="stat-label" data-i18n="stat2">Tasks shipped to production</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">4+ yr</div>
-        <div class="stat-label">Experience, since Sept 2022</div>
+        <div class="stat-num">4+</div>
+        <div class="stat-label" data-i18n="stat3">Years of experience</div>
       </div>
     </div>
 
-    <div class="stack-row" aria-label="Tech stack">
+    <div class="chip-row" aria-label="Main stack">
       <span class="chip">PHP</span>
       <span class="chip">Laravel</span>
       <span class="chip">PostgreSQL</span>
-      <span class="chip">REST API</span>
+      <span class="chip">JavaScript</span>
       <span class="chip">Socket.io</span>
-      <span class="chip">SatuSehat</span>
-      <span class="chip">BPJS Kesehatan</span>
-      <span class="chip">Python</span>
-      <span class="chip">HTML/CSS/JS</span>
       <span class="chip">React</span>
-      <span class="chip">Node.js</span>
-      <span class="chip">Tailwind CSS</span>
-      <span class="chip">Supabase</span>
-      <span class="chip">Java</span>
     </div>
   </div>
 </header>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid reveal">
     <div class="section-head">
-      <h2>Selected projects.</h2>
-      <p>A selection of the 15+ hospital and clinic systems I've shipped to production across Indonesia.</p>
+      <h2 data-i18n="about.title">About.</h2>
     </div>
-
-    <div class="projects-grid">
-
-      <!-- RS OETOMO - Featured -->
-      <article class="project-card featured">
-        <div>
-          <div class="project-top">
-            <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
-            <span class="project-tasks">330 tasks</span>
-          </div>
-          <h3 class="project-name">SIMRS RS Oetomo Bojongsoang</h3>
-          <div class="project-location">Bojongsoang, Bandung · Jawa Barat</div>
-          <p class="project-desc">
-            Full-scope hospital information system covering all clinical and administrative flows.
-            One of the largest project deployments in terms of feature volume and complexity.
-          </p>
-        </div>
-        <ul class="project-features">
-          <li>Laporan Akomodasi Tempat Tidur Rawat Inap — tracks every bed movement per patient across their entire stay</li>
-          <li>Plasma Poliklinik — real-time queue display using Socket.io, triggered from the doctor's worklist</li>
-          <li>Merge PDF Berkas Medis — Python-based service to consolidate multiple medical documents into a single PDF</li>
-          <li>Kiosk & Plasma Pendaftaran — patient self-service registration kiosk with queue calling system</li>
-        </ul>
-      </article>
-
-      <!-- RS HAMORI -->
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Medical clinic">🏨</div>
-          <span class="project-tasks">318 tasks</span>
-        </div>
-        <h3 class="project-name">SIMRS RS Hamori Subang</h3>
-        <div class="project-location">Subang · Jawa Barat</div>
-        <p class="project-desc">
-          Complex multi-module SIMRS with third-party integrations and advanced queue management features.
-        </p>
-        <ul class="project-features">
-          <li>Bridging LIS (Laboratory Information System) — bidirectional API integration for lab orders and results</li>
-          <li>Plasma Perawat Poliklinik — nurse queue display with SpeechSynthesis voice calling</li>
-          <li>Plasma Farmasi (Umum, Asuransi, BPJS) — separate pharmacy queues per patient type</li>
-          <li>Estimasi Pendapatan — revenue charts per date and per month (Umum, Asuransi, BPJS)</li>
-          <li>Plasma Ketersediaan Bed & Jadwal Operasi</li>
-        </ul>
-      </article>
-
-      <!-- RSGM Maranatha -->
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Dental clinic">🦷</div>
-          <span class="project-tasks">196 tasks</span>
-        </div>
-        <h3 class="project-name">SIMRS RSGM Maranatha</h3>
-        <div class="project-location">Bandung · Jawa Barat</div>
-        <p class="project-desc">
-          Dental hospital system with specialized clinical forms and integrated queue management.
-        </p>
-        <ul class="project-features">
-          <li>Formulir Asesmen Medis Poliklinik Gigi — with intra-oral examination charting (tooth diagram)</li>
-          <li>Formulir Resume Medis — auto-populated from nurse/doctor SOAP inputs</li>
-          <li>Tracer Rekam Medis — auto-print trigger on patient registration via APM or loket</li>
-          <li>Plasma gabungan Pendaftaran & Farmasi — combined queue display with Socket.io</li>
-        </ul>
-      </article>
-
-      <!-- RS PANDEGA -->
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Resort hospital">🌴</div>
-          <span class="project-tasks">177 tasks</span>
-        </div>
-        <h3 class="project-name">SIMRS RSUD Pandega Pangandaran</h3>
-        <div class="project-location">Pangandaran · Jawa Barat</div>
-        <p class="project-desc">
-          Regional public hospital system with SatuSehat integration and custom pharmacy labeling.
-        </p>
-        <ul class="project-features">
-          <li>Bridging LIS via file sharing — TXT-based order exchange with PDF result return</li>
-          <li>Mapping Kode KFA — drug code mapping for SatuSehat data submission</li>
-          <li>Print Etiket Farmasi — FPDF-based thermal printer label printing</li>
-          <li>Fitur ceklis verifikasi SOAP — batch SOAP verification for doctors in one click</li>
-        </ul>
-      </article>
-
-      <!-- RS PMI BOGOR -->
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Red Cross">🔴</div>
-          <span class="project-tasks">103 tasks</span>
-        </div>
-        <h3 class="project-name">SIMRS RS PMI Bogor</h3>
-        <div class="project-location">Bogor · Jawa Barat</div>
-        <p class="project-desc">
-          Feature expansion and reporting module development for an established hospital system.
-        </p>
-        <ul class="project-features">
-          <li>Laporan Sensus Harian IGD — Emergency department daily census report</li>
-          <li>Laporan Capaian Kegiatan — 10-category service summary by payer type</li>
-          <li>Formulir SGA & Pengkajian Gizi Geriatri — complex nutritional assessment forms</li>
-          <li>Notifikasi Order Bank Darah — real-time blood bank order alerts</li>
-        </ul>
-      </article>
-
-      <!-- PT PMN GROUP -->
-      <article class="project-card wide">
-        <div>
-          <div class="project-top">
-            <div class="project-icon" role="img" aria-label="Park hospital">🌳</div>
-            <span class="project-tasks">186+ tasks</span>
-          </div>
-          <h3 class="project-name">SIMRS RS PT PMN Group</h3>
-          <div class="project-location">Sumatera Utara (Pabatu, Balimbingan, Laras)</div>
-          <p class="project-desc">
-            Multi-hospital group deployment — 3 hospitals sharing a unified codebase with custom adjustments per site.
-          </p>
-        </div>
-        <ul class="project-features">
-          <li>Mapping Dokter JKN — direct BPJS Kesehatan API integration for doctor-JKN mapping</li>
-          <li>Laporan BOR Harian Rawat Inap — daily bed occupancy rate report</li>
-          <li>SEP BPJS penyesuaian tujuan kunjungan — based on BPJS trust mark API spec</li>
-          <li>Print Setoran Kasir — cashier settlement detail with patient list printout</li>
-        </ul>
-      </article>
-
+    <div>
+      <p class="about-text" data-i18n="about.text">I'm a fullstack developer based in Bandung, Indonesia. Since September 2022 I've built and maintained hospital information systems at Terakorp — registration, clinical records, pharmacy, warehouse, and billing. I like turning messy real-world workflows into software that staff can rely on every day. I'm looking for full-time roles and freelance projects where that domain depth makes a difference.</p>
+      <div class="about-actions">
+        <a class="btn btn-soft btn-sm" href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SIDE PROJECTS -->
-<section id="side-projects">
+<!-- EXPERIENCE -->
+<section id="experience">
   <div class="container">
-    <div class="section-head">
-      <h2>Independent builds.</h2>
-      <p>Side projects and prototypes from my GitHub — modern stacks applied to the problems I know best.</p>
+    <div class="section-head reveal">
+      <h2 data-i18n="exp.title">Experience.</h2>
+      <p data-i18n="exp.lead">Where I work and what I've shipped.</p>
+    </div>
+
+    <ol class="timeline">
+      <li class="timeline-item reveal">
+        <div class="timeline-period" data-i18n="exp1.period">Sep 2022 — Present</div>
+        <div class="timeline-body">
+          <h3>Fullstack Developer</h3>
+          <div class="timeline-org">Terakorp · Bandung</div>
+          <ul class="bullet-list">
+            <li data-i18n="exp1.b1">Develop the Teramedik hospital information system on two platforms: native PHP (V5) and Laravel (V6).</li>
+            <li data-i18n="exp1.b2">Delivered features for 15+ hospitals and clinics — 1,300+ tasks, from reports and clinical forms to realtime queue screens.</li>
+            <li data-i18n="exp1.b3">Connected hospital systems to national platforms (BPJS Kesehatan insurance, SatuSehat health data) and to laboratory systems.</li>
+          </ul>
+        </div>
+      </li>
+    </ol>
+
+    <div class="edu-card reveal" id="education">
+      <div>
+        <div class="edu-label" data-i18n="edu.title">Education</div>
+        <div class="edu-line" data-i18n="edu.line">BINUS Online — undergraduate, in progress</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <h2 data-i18n="proj.title">Selected projects.</h2>
+      <p data-i18n="proj.lead">Client names are kept private. Each card covers the problem, my role, and the result.</p>
     </div>
 
     <div class="projects-grid">
 
-      <article class="project-card">
+      <article class="project-card reveal">
         <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Stethoscope">🩺</div>
-          <span class="project-tasks">Live demo</span>
+          <div class="project-icon" role="img" aria-label="Bell">🔔</div>
+          <span class="project-tag" data-i18n="p1.tag">Multiple hospitals</span>
         </div>
-        <h3 class="project-name">Clinical Ops</h3>
-        <div class="project-location">React · Laravel API · Node.js · Supabase PostgreSQL</div>
-        <p class="project-desc">
-          Healthcare operations MVP that connects every clinical unit in one realtime data flow.
-        </p>
-        <ul class="project-features">
-          <li>Patient registration with UUID keys and JSONB medical history</li>
-          <li>Realtime queue display — Laravel broadcasts to a Node.js Socket.io relay</li>
-          <li>Polyclinic records with ICD-10 coding and e-prescriptions</li>
-          <li>Pharmacy validation with automatic stock deduction, plus cashier billing</li>
-        </ul>
-        <div class="project-links">
-          <a class="btn btn-primary btn-sm" href="https://clinical-ops-eight.vercel.app" target="_blank" rel="noopener">View live ↗</a>
-          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/Clinical-ops" target="_blank" rel="noopener">Source ↗</a>
+        <h3 class="project-name" data-i18n="p1.title">Realtime patient queues & kiosks</h3>
+        <div class="project-context" data-i18n="p1.ctx">Private and public hospitals · West Java</div>
+        <dl class="project-facts">
+          <div><dt data-i18n="lbl.problem">Problem</dt><dd data-i18n="p1.problem">Patients waited without knowing when they'd be called, and staff called names by hand.</dd></div>
+          <div><dt data-i18n="lbl.role">My role</dt><dd data-i18n="p1.role">Built the self-service registration kiosk, queue screens, and voice calling end-to-end.</dd></div>
+          <div><dt data-i18n="lbl.result">Result</dt><dd data-i18n="p1.result">Live queue screens for registration, clinics, nurses, and pharmacy that update the moment a doctor calls the next patient.</dd></div>
+        </dl>
+        <div class="project-bottom">
+          <div class="chip-row"><span class="chip chip-sm">PHP</span><span class="chip chip-sm">Socket.io</span><span class="chip chip-sm">JavaScript</span><span class="chip chip-sm">PostgreSQL</span></div>
         </div>
       </article>
 
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
-          <span class="project-tasks">Live demo</span>
-        </div>
-        <h3 class="project-name">SIMRS Laravel prototype</h3>
-        <div class="project-location">Laravel 11 · Blade · Vercel</div>
-        <p class="project-desc">
-          A hospital information system prototype built from scratch in modern Laravel with role-based access.
-        </p>
-        <ul class="project-features">
-          <li>Modules for patients, IGD (emergency), inpatient, and polyclinic appointments</li>
-          <li>Lab and radiology ordering for doctors</li>
-          <li>Master data for departments, doctors, schedules, rooms, and beds</li>
-          <li>Role middleware for admin, doctor, nurse, and staff</li>
-        </ul>
-        <div class="project-links">
-          <a class="btn btn-primary btn-sm" href="https://simrs-laravel.vercel.app" target="_blank" rel="noopener">View live ↗</a>
-          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/hypercare" target="_blank" rel="noopener">Source ↗</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-top">
-          <div class="project-icon" role="img" aria-label="Building blocks">🧩</div>
-          <span class="project-tasks">Private</span>
-        </div>
-        <h3 class="project-name">Lini backend</h3>
-        <div class="project-location">Laravel · REST API · SaaS</div>
-        <p class="project-desc">
-          Modular backend service for operational SaaS applications.
-        </p>
-        <ul class="project-features">
-          <li>Authentication, role-based access control, and workspace management</li>
-          <li>Pluggable business workflow modules — garment production, laundry, and logistics</li>
-        </ul>
-      </article>
-
-      <article class="project-card">
+      <article class="project-card reveal">
         <div class="project-top">
           <div class="project-icon" role="img" aria-label="Link">🔗</div>
-          <span class="project-tasks">Open source</span>
+          <span class="project-tag" data-i18n="p2.tag">National platforms</span>
         </div>
-        <h3 class="project-name">JSON-driven binding engine</h3>
-        <div class="project-location">Vanilla JavaScript · zero dependencies</div>
-        <p class="project-desc">
-          A lightweight library that renders pages from JSON using HTML data attributes — no framework needed.
-        </p>
-        <ul class="project-features">
-          <li>Text, attribute, tel/mailto, and meta bindings via <code>data-bind-*</code></li>
-          <li>List rendering from arrays with <code>&lt;template&gt;</code> elements</li>
-          <li>Conditional visibility and graceful fallback to demo data</li>
-        </ul>
-        <div class="project-links">
-          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx/json-driven-binding-engine" target="_blank" rel="noopener">Source ↗</a>
+        <h3 class="project-name" data-i18n="p2.title">Health insurance & lab integrations</h3>
+        <div class="project-context" data-i18n="p2.ctx">Hospitals in West Java and North Sumatra</div>
+        <dl class="project-facts">
+          <div><dt data-i18n="lbl.problem">Problem</dt><dd data-i18n="p2.problem">Hospitals must sync claims and medical data with Indonesia's national insurance (BPJS) and health data (SatuSehat) platforms, and exchange orders with lab systems.</dd></div>
+          <div><dt data-i18n="lbl.role">My role</dt><dd data-i18n="p2.role">Built and maintained the API bridges between the hospital system and each platform.</dd></div>
+          <div><dt data-i18n="lbl.result">Result</dt><dd data-i18n="p2.result">Doctor mapping and visit letters for BPJS, drug-code mapping for SatuSehat, and two-way lab order and result exchange.</dd></div>
+        </dl>
+        <div class="project-bottom">
+          <div class="chip-row"><span class="chip chip-sm">PHP</span><span class="chip chip-sm">REST API</span><span class="chip chip-sm">PostgreSQL</span></div>
+        </div>
+      </article>
+
+      <article class="project-card reveal">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Hospital">🏥</div>
+          <span class="project-tag" data-i18n="p3.tag">3 hospitals</span>
+        </div>
+        <h3 class="project-name" data-i18n="p3.title">Multi-hospital rollout & reporting</h3>
+        <div class="project-context" data-i18n="p3.ctx">Hospital group · North Sumatra</div>
+        <dl class="project-facts">
+          <div><dt data-i18n="lbl.problem">Problem</dt><dd data-i18n="p3.problem">A three-hospital group needed one codebase with site-specific rules, and management needed reliable daily numbers.</dd></div>
+          <div><dt data-i18n="lbl.role">My role</dt><dd data-i18n="p3.role">Adapted modules for each site and built the reporting layer.</dd></div>
+          <div><dt data-i18n="lbl.result">Result</dt><dd data-i18n="p3.result">Daily bed-occupancy and cashier settlement reports, plus insurance workflow adjustments, all from one shared codebase.</dd></div>
+        </dl>
+        <div class="project-bottom">
+          <div class="chip-row"><span class="chip chip-sm">PHP</span><span class="chip chip-sm">PostgreSQL</span><span class="chip chip-sm">FPDF</span></div>
+        </div>
+      </article>
+
+      <article class="project-card featured reveal">
+        <div class="project-top">
+          <div class="project-icon" role="img" aria-label="Stethoscope">🩺</div>
+          <span class="project-tag" data-i18n="p4.tag">Live demo</span>
+        </div>
+        <h3 class="project-name">Clinical Ops</h3>
+        <div class="project-context" data-i18n="p4.ctx">Personal project · dummy data</div>
+        <dl class="project-facts">
+          <div><dt data-i18n="lbl.problem">Problem</dt><dd data-i18n="p4.problem">Show a full clinic flow, from registration to billing, in one realtime app without exposing any client code.</dd></div>
+          <div><dt data-i18n="lbl.role">My role</dt><dd data-i18n="p4.role">Solo build: database, API, realtime service, and frontend.</dd></div>
+          <div><dt data-i18n="lbl.result">Result</dt><dd data-i18n="p4.result">A working MVP with realtime queues, ICD-10 records, e-prescriptions, automatic stock deduction, and billing.</dd></div>
+        </dl>
+        <div class="project-bottom">
+          <div class="chip-row"><span class="chip chip-sm">React</span><span class="chip chip-sm">Laravel</span><span class="chip chip-sm">Node.js</span><span class="chip chip-sm">Socket.io</span><span class="chip chip-sm">Supabase</span></div>
+          <div class="project-links">
+            <a class="btn btn-primary btn-sm" href="https://clinical-ops-eight.vercel.app" target="_blank" rel="noopener" data-i18n="link.live">View live ↗</a>
+            <a class="btn btn-outline btn-sm" href="https://github.com/mrezaaxx/Clinical-ops" target="_blank" rel="noopener" data-i18n="link.source">Source ↗</a>
+          </div>
         </div>
       </article>
 
     </div>
 
-    <p class="side-note">
-      Also on GitHub: Java coursework on OOP, recursion, and data-structure analysis, and
-      <a href="https://github.com/mrezaaxx/laundryeza" target="_blank" rel="noopener">Laundryeza</a>,
-      a Laravel laundry management app from 2022.
-    </p>
+    <div class="more-work reveal">
+      <h3 data-i18n="more.title">More on GitHub</h3>
+      <ul class="more-list">
+        <li>
+          <a class="more-item" href="https://simrs-laravel.vercel.app" target="_blank" rel="noopener">
+            <span class="more-name" data-i18n="more1.name">SIMRS Laravel prototype ↗</span>
+            <span class="more-desc" data-i18n="more1.desc">Hospital system prototype with role-based access. Live demo.</span>
+          </a>
+        </li>
+        <li>
+          <a class="more-item" href="https://github.com/mrezaaxx/json-driven-binding-engine" target="_blank" rel="noopener">
+            <span class="more-name">JSON-driven binding engine ↗</span>
+            <span class="more-desc" data-i18n="more2.desc">Zero-dependency JavaScript library that renders pages from JSON.</span>
+          </a>
+        </li>
+        <li>
+          <div class="more-item">
+            <span class="more-name" data-i18n="more3.name">Lini backend · private</span>
+            <span class="more-desc" data-i18n="more3.desc">Modular Laravel API for operational SaaS apps.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-head">
-      <h2>Technical skills.</h2>
-      <p>From database queries to national health platform integrations.</p>
+    <div class="section-head reveal">
+      <h2 data-i18n="skills.title">Skills.</h2>
+      <p data-i18n="skills.lead">Grouped by what I use them for.</p>
     </div>
 
     <div class="skills-grid">
-      <div class="skill-group">
-        <h3 class="skill-group-title">Backend</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>PHP (Native)</span><div class="skill-bar" role="progressbar" aria-label="PHP (Native)" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="95%"></div></div></div>
-          <div class="skill-item"><span>Laravel</span><div class="skill-bar" role="progressbar" aria-label="Laravel" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-          <div class="skill-item"><span>REST API Dev</span><div class="skill-bar" role="progressbar" aria-label="REST API Dev" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-          <div class="skill-item"><span>Python (scripting)</span><div class="skill-bar" role="progressbar" aria-label="Python (scripting)" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="65%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3>Backend</h3>
+        <p data-i18n="sk1">APIs and business logic</p>
+        <div class="chip-row"><span class="chip chip-sm">PHP</span><span class="chip chip-sm">Laravel</span><span class="chip chip-sm">REST API</span><span class="chip chip-sm">Node.js</span><span class="chip chip-sm">Python</span></div>
       </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Database</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>PostgreSQL</span><div class="skill-bar" role="progressbar" aria-label="PostgreSQL" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-          <div class="skill-item"><span>Complex Queries</span><div class="skill-bar" role="progressbar" aria-label="Complex Queries" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-          <div class="skill-item"><span>Report Queries</span><div class="skill-bar" role="progressbar" aria-label="Report Queries" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3>Database</h3>
+        <p data-i18n="sk2">Data models and heavy reporting queries</p>
+        <div class="chip-row"><span class="chip chip-sm">PostgreSQL</span><span class="chip chip-sm">Supabase</span><span class="chip chip-sm" data-i18n="sk2.chip">Reporting SQL</span></div>
       </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Frontend</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>HTML / CSS</span><div class="skill-bar" role="progressbar" aria-label="HTML / CSS" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="90%"></div></div></div>
-          <div class="skill-item"><span>JavaScript / jQuery</span><div class="skill-bar" role="progressbar" aria-label="JavaScript / jQuery" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-          <div class="skill-item"><span>Socket.io</span><div class="skill-bar" role="progressbar" aria-label="Socket.io" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-          <div class="skill-item"><span>Print / PDF (FPDF)</span><div class="skill-bar" role="progressbar" aria-label="Print / PDF (FPDF)" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3>Frontend</h3>
+        <p data-i18n="sk3">Interfaces staff use all day</p>
+        <div class="chip-row"><span class="chip chip-sm">JavaScript</span><span class="chip chip-sm">jQuery</span><span class="chip chip-sm">React</span><span class="chip chip-sm">Tailwind CSS</span><span class="chip chip-sm">HTML/CSS</span></div>
       </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Healthcare IT</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>BPJS Kesehatan API</span><div class="skill-bar" role="progressbar" aria-label="BPJS Kesehatan API" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-          <div class="skill-item"><span>SatuSehat Integration</span><div class="skill-bar" role="progressbar" aria-label="SatuSehat Integration" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="78%"></div></div></div>
-          <div class="skill-item"><span>LIS Bridging</span><div class="skill-bar" role="progressbar" aria-label="LIS Bridging" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-          <div class="skill-item"><span>EMR / SOAP Workflows</span><div class="skill-bar" role="progressbar" aria-label="EMR / SOAP Workflows" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3 data-i18n="sk4.title">Realtime & print</h3>
+        <p data-i18n="sk4">Live screens, labels, and PDFs</p>
+        <div class="chip-row"><span class="chip chip-sm">Socket.io</span><span class="chip chip-sm">SpeechSynthesis</span><span class="chip chip-sm">FPDF</span><span class="chip chip-sm" data-i18n="sk4.chip">Thermal printing</span></div>
       </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Infrastructure</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>Ubuntu Server</span><div class="skill-bar" role="progressbar" aria-label="Ubuntu Server" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="80%"></div></div></div>
-          <div class="skill-item"><span>Git / Version Control</span><div class="skill-bar" role="progressbar" aria-label="Git / Version Control" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="82%"></div></div></div>
-          <div class="skill-item"><span>Cron Jobs</span><div class="skill-bar" role="progressbar" aria-label="Cron Jobs" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="75%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3 data-i18n="sk5.title">Healthcare IT</h3>
+        <p data-i18n="sk5">National platforms and clinical workflows</p>
+        <div class="chip-row"><span class="chip chip-sm">BPJS Kesehatan</span><span class="chip chip-sm">SatuSehat</span><span class="chip chip-sm" data-i18n="sk5.chip">Lab (LIS) bridging</span><span class="chip chip-sm">EMR / SOAP</span></div>
       </div>
-
-      <div class="skill-group">
-        <h3 class="skill-group-title">Domain knowledge</h3>
-        <div class="skill-items">
-          <div class="skill-item"><span>Hospital Business Flow</span><div class="skill-bar" role="progressbar" aria-label="Hospital Business Flow" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="92%"></div></div></div>
-          <div class="skill-item"><span>Clinical Documentation</span><div class="skill-bar" role="progressbar" aria-label="Clinical Documentation" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="88%"></div></div></div>
-          <div class="skill-item"><span>Pharmacy & Warehouse</span><div class="skill-bar" role="progressbar" aria-label="Pharmacy & Warehouse" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="85%"></div></div></div>
-          <div class="skill-item"><span>Medical Reporting</span><div class="skill-bar" role="progressbar" aria-label="Medical Reporting" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100"><div class="skill-bar-fill" data-percent="87%"></div></div></div>
-        </div>
+      <div class="skill-group reveal">
+        <h3 data-i18n="sk6.title">Infrastructure</h3>
+        <p data-i18n="sk6">Deploying and keeping systems running</p>
+        <div class="chip-row"><span class="chip chip-sm">Ubuntu Server</span><span class="chip chip-sm">Git</span><span class="chip chip-sm">Cron</span><span class="chip chip-sm">Vercel</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT / UPWORK -->
-<section id="about">
-  <div class="container">
-    <div class="section-head">
-      <h2>Profile.</h2>
-    </div>
-
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm a fullstack developer with 4+ years of focused experience in web-based Hospital
-          Information Systems (SIMRS). My work spans the entire hospital business flow — from
-          patient registration, clinical documentation (SOAP, EMR), pharmacy and drug dispensing,
-          warehouse and supply chain, to billing and accounting.
-        </p>
-        <p>
-          Since September 2022 I've worked at Terakorp on the Teramedik SIMRS platform — both the native-PHP V5 line and the
-          Laravel-based V6 — across 15+ hospital and clinic deployments, plus self-service
-          patient kiosks. I've completed 1,300+ individual tasks ranging from complex reporting
-          modules and real-time queue systems to integrations with national health platforms
-          like BPJS Kesehatan and SatuSehat.
-        </p>
-        <p>
-          My primary stack is PHP (Laravel & native), PostgreSQL, and vanilla JavaScript with
-          Socket.io for real-time features. I'm comfortable working on legacy codebases, extending
-          existing systems, or building new modules from scratch.
-        </p>
-        <span class="about-location">Bandung, Indonesia · Available for remote work worldwide</span>
-        <div class="about-actions">
-          <a class="btn btn-soft btn-sm" href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a class="btn btn-soft btn-sm" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a>
-        </div>
-      </div>
-
-      <aside class="upwork-card" aria-label="Upwork profile">
-        <div class="upwork-top">
-          <h3>Upwork</h3>
-          <span class="badge-accent">Open to work</span>
-        </div>
-        <p class="upwork-headline">PHP Laravel Developer — Hospital Information Systems · REST API · PostgreSQL</p>
-        <p class="upwork-bio">
-          With 4+ years of hands-on experience in healthcare information system development,
-          I specialize in building and maintaining full-cycle hospital management solutions —
-          from patient registration and clinical EMR workflows to pharmacy, warehouse, and
-          accounting modules. Whether you need a robust web-based system, a well-structured API,
-          or an extension to an existing healthcare platform, I bring both the technical skill
-          and domain knowledge to deliver reliable, scalable solutions.
-        </p>
-        <div class="upwork-rate">
-          <span class="rate-num">$10–18</span>
-          <span class="rate-label">/ hour, starting rate</span>
-        </div>
-        <div class="upwork-tags">
-          <span class="chip">PHP</span>
-          <span class="chip">Laravel</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">REST API</span>
-          <span class="chip">Healthcare IT</span>
-          <span class="chip">Socket.io</span>
-          <span class="chip">SatuSehat</span>
-          <span class="chip">BPJS API</span>
-          <span class="chip">Web Development</span>
-        </div>
-      </aside>
     </div>
   </div>
 </section>
@@ -1161,10 +1009,10 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="contact-card">
-      <div class="contact-head">
-        <h2>Let's work together.</h2>
-        <p>Open to freelance projects and remote roles, so reach out anytime.</p>
+    <div class="contact-card reveal">
+      <div class="section-head">
+        <h2 data-i18n="contact.title">Let's talk.</h2>
+        <p data-i18n="contact.lead">Open to full-time roles and freelance projects.</p>
       </div>
       <div class="contact-list">
         <a class="contact-item" href="mailto:rezamuhammad890@gmail.com">
@@ -1177,19 +1025,14 @@
           <span class="contact-value">linkedin.com/in/mrezaaxx</span>
           <span class="contact-arrow" aria-hidden="true">↗</span>
         </a>
-        <a class="contact-item" href="https://wa.me/6289654304740" target="_blank" rel="noopener">
-          <span class="contact-label">WhatsApp</span>
-          <span class="contact-value">+62 896-5430-4740</span>
-          <span class="contact-arrow" aria-hidden="true">↗</span>
-        </a>
-        <a class="contact-item" href="tel:+6289654304740">
-          <span class="contact-label">Phone</span>
-          <span class="contact-value">+62 896-5430-4740</span>
-          <span class="contact-arrow" aria-hidden="true">→</span>
-        </a>
         <a class="contact-item" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">
           <span class="contact-label">GitHub</span>
           <span class="contact-value">github.com/mrezaaxx</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" href="https://wa.me/6289654304740" target="_blank" rel="noopener">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+62 896-5430-4740</span>
           <span class="contact-arrow" aria-hidden="true">↗</span>
         </a>
       </div>
@@ -1201,43 +1044,151 @@
 
 <footer>
   <div class="container">
-    <div class="footer-name">Muhammad Reza.</div>
-    <p class="footer-tagline">Fullstack developer · Healthcare IT · Bandung, Indonesia</p>
+    <div class="footer-top">
+      <div>
+        <div class="footer-name">Muhammad Reza.</div>
+        <p class="footer-tagline" data-i18n="footer.tagline">Fullstack developer · Healthcare IT · Bandung, Indonesia</p>
+      </div>
+      <a class="btn btn-inverse" href="#contact" data-i18n="cta.contact">Contact me</a>
+    </div>
     <div class="footer-bottom">
       <ul class="footer-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#about">Profile</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#experience" data-i18n="nav.experience">Experience</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
         <li><a href="https://www.linkedin.com/in/mrezaaxx" target="_blank" rel="noopener">LinkedIn ↗</a></li>
         <li><a href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
-      <div class="footer-contacts">
-        <a class="footer-contact" href="mailto:rezamuhammad890@gmail.com">rezamuhammad890@gmail.com</a>
-        <a class="footer-contact" href="tel:+6289654304740">+62 896-5430-4740</a>
-      </div>
+      <span data-i18n="footer.copy">© 2026 Muhammad Reza. All rights reserved.</span>
     </div>
   </div>
 </footer>
 
 <script>
-  // Skill bar animation on scroll
-  const observer = new IntersectionObserver((entries) => {
+  // Bahasa Indonesia strings; English is the markup default.
+  const ID = {
+    'skip': 'Langsung ke konten',
+    'nav.about': 'Tentang',
+    'nav.experience': 'Pengalaman',
+    'nav.projects': 'Proyek',
+    'nav.skills': 'Keahlian',
+    'cta.contact': 'Hubungi saya',
+    'hero.badge': 'Terbuka untuk kerja full-time dan freelance',
+    'hero.role': 'Fullstack Developer · IT Kesehatan',
+    'hero.value': 'Saya membangun software rumah sakit yang dipakai di 15+ rumah sakit dan klinik di Indonesia sejak 2022 — dari antrean pasien hingga integrasi BPJS Kesehatan.',
+    'hero.cta2': 'Lihat proyek',
+    'stat1': 'Rumah sakit & klinik sejak 2022',
+    'stat2': 'Task selesai hingga produksi',
+    'stat3': 'Tahun pengalaman',
+    'about.title': 'Tentang.',
+    'about.text': 'Saya fullstack developer yang berbasis di Bandung, Indonesia. Sejak September 2022 saya membangun dan memelihara sistem informasi rumah sakit di Terakorp — pendaftaran, rekam medis, farmasi, gudang, dan billing. Saya senang mengubah alur kerja nyata yang rumit menjadi software yang bisa diandalkan staf setiap hari. Saya mencari posisi full-time dan proyek freelance yang membutuhkan pemahaman domain seperti ini.',
+    'exp.title': 'Pengalaman.',
+    'exp.lead': 'Tempat saya bekerja dan apa yang sudah saya bangun.',
+    'exp1.period': 'Sep 2022 — Sekarang',
+    'exp1.b1': 'Mengembangkan sistem informasi rumah sakit Teramedik di dua platform: PHP native (V5) dan Laravel (V6).',
+    'exp1.b2': 'Mengerjakan fitur untuk 15+ rumah sakit dan klinik — 1.300+ task, dari laporan dan formulir klinis hingga layar antrean realtime.',
+    'exp1.b3': 'Menghubungkan sistem rumah sakit dengan platform nasional (BPJS Kesehatan, SatuSehat) dan sistem laboratorium.',
+    'edu.title': 'Pendidikan',
+    'edu.line': 'BINUS Online — S1, sedang berjalan',
+    'proj.title': 'Proyek pilihan.',
+    'proj.lead': 'Nama klien dirahasiakan. Setiap kartu menjelaskan masalah, peran saya, dan hasilnya.',
+    'lbl.problem': 'Masalah',
+    'lbl.role': 'Peran saya',
+    'lbl.result': 'Hasil',
+    'p1.tag': 'Beberapa RS',
+    'p1.title': 'Antrean pasien realtime & kiosk',
+    'p1.ctx': 'RS swasta dan pemerintah · Jawa Barat',
+    'p1.problem': 'Pasien menunggu tanpa tahu kapan dipanggil, dan staf memanggil nama secara manual.',
+    'p1.role': 'Membangun kiosk pendaftaran mandiri, layar antrean, dan panggilan suara dari awal sampai akhir.',
+    'p1.result': 'Layar antrean live untuk pendaftaran, poliklinik, perawat, dan farmasi yang langsung ter-update saat dokter memanggil pasien berikutnya.',
+    'p2.tag': 'Platform nasional',
+    'p2.title': 'Integrasi asuransi kesehatan & lab',
+    'p2.ctx': 'RS di Jawa Barat dan Sumatera Utara',
+    'p2.problem': 'Rumah sakit wajib menyinkronkan klaim dan data medis dengan BPJS Kesehatan dan SatuSehat, serta bertukar order dengan sistem laboratorium.',
+    'p2.role': 'Membangun dan memelihara jembatan API antara SIMRS dan setiap platform.',
+    'p2.result': 'Mapping dokter dan SEP untuk BPJS, mapping kode obat (KFA) untuk SatuSehat, serta pertukaran order dan hasil lab dua arah.',
+    'p3.tag': '3 RS',
+    'p3.title': 'Rollout multi-RS & pelaporan',
+    'p3.ctx': 'Grup rumah sakit · Sumatera Utara',
+    'p3.problem': 'Grup tiga rumah sakit butuh satu codebase dengan aturan per lokasi, dan manajemen butuh angka harian yang akurat.',
+    'p3.role': 'Menyesuaikan modul untuk tiap lokasi dan membangun modul laporan.',
+    'p3.result': 'Laporan BOR harian dan setoran kasir, ditambah penyesuaian alur BPJS, semuanya dari satu codebase bersama.',
+    'p4.tag': 'Demo live',
+    'p4.ctx': 'Proyek pribadi · data dummy',
+    'p4.problem': 'Menampilkan alur klinik lengkap, dari pendaftaran hingga billing, dalam satu aplikasi realtime tanpa membuka kode klien.',
+    'p4.role': 'Dikerjakan sendiri: database, API, layanan realtime, dan frontend.',
+    'p4.result': 'MVP yang berjalan dengan antrean realtime, rekam medis ICD-10, e-resep, potong stok otomatis, dan billing.',
+    'link.live': 'Lihat demo ↗',
+    'link.source': 'Kode ↗',
+    'more.title': 'Lainnya di GitHub',
+    'more1.name': 'Prototipe SIMRS Laravel ↗',
+    'more1.desc': 'Prototipe sistem rumah sakit dengan akses berbasis peran. Ada demo live.',
+    'more2.desc': 'Library JavaScript tanpa dependensi untuk render halaman dari JSON.',
+    'more3.name': 'Lini backend · privat',
+    'more3.desc': 'API Laravel modular untuk aplikasi SaaS operasional.',
+    'skills.title': 'Keahlian.',
+    'skills.lead': 'Dikelompokkan berdasarkan kegunaannya.',
+    'sk1': 'API dan logika bisnis',
+    'sk2': 'Model data dan query laporan yang berat',
+    'sk2.chip': 'SQL laporan',
+    'sk3': 'Antarmuka yang dipakai staf seharian',
+    'sk4.title': 'Realtime & cetak',
+    'sk4': 'Layar live, label, dan PDF',
+    'sk4.chip': 'Printer thermal',
+    'sk5.title': 'IT Kesehatan',
+    'sk5': 'Platform nasional dan alur klinis',
+    'sk5.chip': 'Bridging lab (LIS)',
+    'sk6.title': 'Infrastruktur',
+    'sk6': 'Deploy dan menjaga sistem tetap berjalan',
+    'contact.title': 'Mari berdiskusi.',
+    'contact.lead': 'Terbuka untuk posisi full-time dan proyek freelance.',
+    'footer.tagline': 'Fullstack developer · IT Kesehatan · Bandung, Indonesia',
+    'footer.copy': '© 2026 Muhammad Reza. Hak cipta dilindungi.'
+  };
+
+  const i18nEls = document.querySelectorAll('[data-i18n]');
+  const EN = {};
+  i18nEls.forEach(el => { EN[el.dataset.i18n] = el.textContent; });
+  const TITLES = {
+    en: document.title,
+    id: 'Muhammad Reza — Fullstack Developer, IT Kesehatan'
+  };
+  const langToggle = document.getElementById('lang-toggle');
+
+  function setLang(lang) {
+    const dict = lang === 'id' ? ID : EN;
+    i18nEls.forEach(el => {
+      const value = dict[el.dataset.i18n];
+      if (value !== undefined) el.textContent = value;
+    });
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang];
+    const next = lang === 'id' ? 'en' : 'id';
+    langToggle.textContent = next.toUpperCase();
+    langToggle.lang = next;
+    langToggle.setAttribute('aria-label', next === 'id' ? 'ID — Ganti ke Bahasa Indonesia' : 'EN — Switch to English');
+    try { localStorage.setItem('lang', lang); } catch (e) {}
+  }
+
+  langToggle.addEventListener('click', () => {
+    setLang(document.documentElement.lang === 'id' ? 'en' : 'id');
+  });
+
+  let savedLang = null;
+  try { savedLang = localStorage.getItem('lang'); } catch (e) {}
+  if (savedLang === 'id') setLang('id');
+
+  // Light reveal-on-scroll; unobserve once shown.
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.querySelectorAll('.skill-bar-fill').forEach(bar => {
-          bar.style.width = bar.getAttribute('data-percent');
-        });
-        // Once animated, no need to observe anymore
-        observer.unobserve(entry.target);
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  const skillsSection = document.querySelector('#skills');
-  if (skillsSection) {
-    observer.observe(skillsSection);
-  }
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   // Scroll-spy for navigation links
   const spyObserver = new IntersectionObserver((entries) => {
