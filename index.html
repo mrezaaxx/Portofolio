@@ -450,6 +450,55 @@
 
   .about-actions { margin-top: var(--s-lg); }
 
+  /* CONTACT */
+  .contact-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-xxl);
+    align-items: center;
+    background: var(--canvas-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-xxl);
+  }
+
+  .contact-head h2 {
+    font-size: clamp(32px, 5vw, 44px);
+    font-weight: var(--w-display);
+    line-height: 1.13;
+    margin-bottom: var(--s-sm);
+  }
+
+  .contact-head p {
+    font-size: 20px;
+    font-weight: var(--w-light);
+    color: var(--text-muted);
+  }
+
+  .contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xs);
+  }
+
+  .contact-item {
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
+    align-items: center;
+    gap: var(--s-md);
+    min-height: 56px;
+    padding: 0 var(--s-lg);
+    background: var(--canvas);
+    border-radius: var(--r-full);
+    text-decoration: none;
+    transition: background-color 0.2s;
+  }
+
+  .contact-item:hover { background: var(--hairline-soft); }
+
+  .contact-label { font-size: 14px; color: var(--text-muted); }
+  .contact-value { font-weight: var(--w-title); overflow-wrap: anywhere; }
+  .contact-arrow { color: var(--text-muted); }
+
   /* SKILLS */
   .skills-grid {
     display: grid;
@@ -621,7 +670,9 @@
     color: var(--text-faint);
   }
 
-  .footer-links { display: flex; gap: var(--s-lg); list-style: none; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: var(--s-sm) var(--s-lg); list-style: none; }
+  .footer-contact { color: var(--text-faint); text-decoration: none; transition: color 0.2s; }
+  .footer-contact:hover { color: var(--on-primary); }
   .footer-links a { text-decoration: none; color: var(--text-faint); transition: color 0.2s; }
   .footer-links a:hover { color: var(--on-primary); }
 
@@ -642,13 +693,18 @@
     .featured .project-features,
     .wide .project-features { padding-top: var(--s-lg); border-top: 1px solid var(--hairline); }
     .about-grid { grid-template-columns: 1fr; }
+    .contact-card { grid-template-columns: 1fr; gap: var(--s-xl); }
   }
 
   @media (max-width: 640px) {
     .hero { padding-top: calc(var(--s-section) + var(--s-xxl)); }
     .hero-stats { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; }
-    .project-card, .upwork-card { padding: var(--s-lg); }
+    .project-card, .upwork-card, .contact-card { padding: var(--s-lg); }
+    .contact-item { grid-template-columns: 1fr auto; row-gap: 0; padding: var(--s-sm) var(--s-lg); }
+    .contact-label { grid-column: 1; }
+    .contact-value { grid-column: 1; }
+    .contact-arrow { grid-column: 2; grid-row: 1 / span 2; }
     .featured .project-name { font-size: 24px; line-height: 1.25; }
     .hero-lead, .section-head p, .featured .project-desc, .about-text p:first-child { font-size: 18px; }
   }
@@ -672,7 +728,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#about">Profile</a></li>
     </ul>
-    <a class="btn btn-primary btn-sm" href="#about">Hire me</a>
+    <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
   </nav>
 </div>
 
@@ -1099,6 +1155,35 @@
   </div>
 </section>
 
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-card">
+      <div class="contact-head">
+        <h2>Let's work together.</h2>
+        <p>Open to freelance projects and remote roles, so reach out anytime.</p>
+      </div>
+      <div class="contact-list">
+        <a class="contact-item" href="https://wa.me/6289654304740" target="_blank" rel="noopener">
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+62 896-5430-4740</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+        <a class="contact-item" href="tel:+6289654304740">
+          <span class="contact-label">Phone</span>
+          <span class="contact-value">+62 896-5430-4740</span>
+          <span class="contact-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="contact-item" href="https://github.com/mrezaaxx" target="_blank" rel="noopener">
+          <span class="contact-label">GitHub</span>
+          <span class="contact-value">github.com/mrezaaxx</span>
+          <span class="contact-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
@@ -1110,9 +1195,10 @@
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#about">Profile</a></li>
+        <li><a href="#contact">Contact</a></li>
         <li><a href="https://github.com/mrezaaxx" target="_blank" rel="noopener">GitHub ↗</a></li>
       </ul>
-      <span>Available for remote work worldwide</span>
+      <a class="footer-contact" href="tel:+6289654304740">+62 896-5430-4740</a>
     </div>
   </div>
 </footer>
